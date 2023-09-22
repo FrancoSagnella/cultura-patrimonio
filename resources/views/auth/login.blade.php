@@ -1,7 +1,7 @@
 @extends('index')
-{{-- @push('styles')
-@endpush --}}
-@section('content')
+@push('styles')
+@endpush
+@section('page')
 
     <div class="container">
         <div class="row m-b-2">
@@ -49,19 +49,7 @@
                         </div>
                     </div>
 
-                    {{-- <div class="row">
-                        <div class="col-md-10">
-                            <hr>
-                        </div>
-                    </div> --}}
-
                 </form>
-
-                {{-- <div class="row">
-                    <div class="col-xs-12">
-                        <p><a href="#">Recuperar mi contraseña</a></p>
-                    </div>
-                </div> --}}
             </div>
 
 

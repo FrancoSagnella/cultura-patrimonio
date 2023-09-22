@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\auth\LoginController;
+use App\Http\Controllers\PatrimonioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('index');
+    return redirect('patrimonio');
 });
 
 
@@ -25,4 +26,11 @@ Route::prefix('auth')->group(function () {
     Route::post('/', [LoginController::class, 'store'])->name('login.store');
     Route::post('/asd', [LoginController::class, 'asd'])->name('login.asd');
 
+});
+
+//Patrimonio routes
+Route::prefix('patrimonio')->group(function () {
+    Route::get('/', [PatrimonioController::class, 'index'])->name('patrimonio.index');
+    Route::get('/alta', [PatrimonioController::class, 'create'])->name('patrimonio.create');
+    Route::post('/alta', [PatrimonioController::class, 'store'])->name('patrimonio.store');
 });
