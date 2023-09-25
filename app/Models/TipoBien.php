@@ -9,6 +9,7 @@ class TipoBien extends Model
 {
     use HasFactory;
 
-    protected $table = 'tipos_bien';
+    //De momento por lo menos uso esta
+    protected $table = 'tipo_bien';
 
 }

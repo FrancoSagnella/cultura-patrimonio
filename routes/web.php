@@ -31,6 +31,6 @@ Route::prefix('auth')->group(function () {
 //Patrimonio routes
 Route::prefix('patrimonio')->group(function () {
     Route::get('/', [PatrimonioController::class, 'index'])->name('patrimonio.index');
-    Route::get('/alta', [PatrimonioController::class, 'create'])->name('patrimonio.create');
-    Route::post('/alta', [PatrimonioController::class, 'store'])->name('patrimonio.store');
+    Route::get('/create', [PatrimonioController::class, 'create'])->name('patrimonio.create');
+    Route::post('/', [PatrimonioController::class, 'store'])->name('patrimonio.store');
 });

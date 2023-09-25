@@ -9,6 +9,7 @@ class TipoIngreso extends Model
 {
     use HasFactory;
 
-    protected $table = 'tipos_ingreso';
+    //De momento por lo menos uso esta
+    protected $table = 'tipo_ingreso';
 
 }

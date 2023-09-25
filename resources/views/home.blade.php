@@ -2,7 +2,7 @@
 @push('styles')
 @endpush
 @section('page')
-    <div class="container border border-3 mt-5">
+    <div class="container border border-3 mt-5 mb-5">
         {{-- Menu --}}
         <div class="row py-4 text-center border-bottom border-3">
 
