@@ -1,4 +1,4 @@
-@extends('home')
+@extends('index')
 @push('styles')
 @endpush
 @section('content')

@@ -4,13 +4,16 @@ html {
 }
 body {
     margin: 0;
-    margin-bottom: 200px;
+    /* margin-bottom: 200px; */
 }
 .bg-celeste-argentina{
     background-color: #37bbed;
 }
+.text-celeste-argentina{
+    color: #37bbed;
+}
 .navbar-custom{
-    min-height: 72px;
+    min-height: 5rem;
 }
 .header-description{
     min-height: 15rem;
@@ -18,10 +21,11 @@ body {
     padding-top: 5rem;
 }
 footer {
-    position: absolute;
+    /* position: absolute; */
     z-index: -999999;
     bottom: 0;
     width: 100%;
+    min-height: 7vh;
 }
 .links a{
     text-decoration:none;
@@ -53,3 +57,81 @@ footer {
     cursor: pointer;
 }
 
+.linea-footer {
+    border-right: 2px solid white;
+}
+
+
+
+
+
+
+/* Estilo para el menú lateral */
+.menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 25vh; /* Ancho del menú */
+    background-color: #37bbed; /* Color de fondo del menú */
+    height: 100vh; /* Altura del menú igual al alto de la ventana */
+    color: white; /* Color del texto en el menú */
+    padding: 20px;
+    box-sizing: border-box;
+    z-index: 2; /* Asegura que el encabezado esté en la capa superior */
+
+}
+
+.menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.menu ul li {
+    margin-bottom: 10px;
+}
+
+.menu a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Estilo para el contenido principal */
+.content {
+    margin-left: 25vh;
+    padding: 20px;
+    box-sizing: border-box;
+    min-height: calc(100vh - 13.803vh);
+    /* max-height: calc(100vh - 13.9vh); */
+}
+
+
+.header{
+    min-height: 6vh;
+    text-align: center;
+    z-index: 1; /* Asegura que el encabezado esté en la capa superior */
+    position: relative; /* Agrega esto para establecer un contexto de posicionamiento */
+}
+
+.contenedor-gris-redondeado{
+    background-color: #F2F2F2;
+    border-radius: 2rem;
+    min-height: calc(100vh - 20vh);
+}
+ .titulo-redondeado-celeste{
+    color: white;
+    background-color: #37bbed;
+    border-radius: 1rem;
+ }
+
+.borde-celeste{
+    border: 2px solid #37bbed;
+    border-radius: 1rem;
+
+    min-height: calc(100vh - 40vh);
+    max-height: calc(100vh - 40vh);
+    overflow-y: auto;
+}
+
+.botones-redondos{
+    border-radius: 1rem;
+}
