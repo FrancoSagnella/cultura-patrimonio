@@ -41,7 +41,7 @@ const seleccionarBien = (selectActual, indiceSelectActual, siguienteSelect, indi
             $("#modelo").val('default');
             $('#usuario-responsable').hide();
             $("#usuarioResponsable").val('default');
-            $("#dependencia-final-seleccionada").val('sinSelecion');
+            $("#tipobien-final-seleccionado").val('sinSelecion');
         }
         else{
             let idSeleccionada = $("#"+selectActual).val();
@@ -112,4 +112,10 @@ const verificarHijosBienes = (indiceActual) => {
     borrar.forEach(element => {
         element.remove();
     });
+}
+
+//Recibe el array con todas los tipos de bien que estaban seleccionadas en el select antes del error
+//Lo recorre y va creando los selects que correspondan para recuperar los datos del formulario anterior
+const cargarTiposBienEnError = (tiposBienViejos) => {
+    console.log(tiposBienViejos);
 }

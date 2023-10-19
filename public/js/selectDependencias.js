@@ -121,3 +121,33 @@ const cargarResponsables = (idDependencia) => {
     $("#responsable").append(nuevosOptions);
     $("#responsable").val('default');
 }
+
+//Recibe el array con todas las dependencias que estaban seleccionadas en el select antes del error
+//Lo recorre y va creando los selects que correspondan para recuperar los datos del formulario anterior
+const cargarDependenciasEnError = (dependenciasViejas) => {
+
+    let nombrePadre;
+    let nombreSiguiente;
+
+    for(let i = 0; i < dependenciasViejas.length; i++){
+        //Primero carga el valor en el select padre
+        if(i == 0){
+            $("#dependencia-padre").val(dependenciasViejas[i]);
+        }
+        //el resto de iteraciones creo que resto de selects
+        else{
+            //Si el indice es 1, el quiere decir que el anterior select era el padre, entonces uso ese nombre
+            if(i == 1){
+                nombrePadre = 'dependencia-padre';
+                nombreSiguiente = 'dependencia-hija-'+i;
+            }
+            //Sino uso el nombre de los selects hijos
+            else{
+                nombrePadre = 'dependencia-hija-'+(i-1);
+                nombreSiguiente = 'dependencia-hija-'+i;
+            }
+            seleccionarDependencia(nombrePadre, i-1, nombreSiguiente, i);
+        }
+    }
+
+}

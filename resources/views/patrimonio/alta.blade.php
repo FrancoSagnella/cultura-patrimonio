@@ -30,7 +30,6 @@
                         </div>
                     </div>
 
-
                     {{-- Dependencias Input --}}
                     <div class="row">
                         <div id="dependencias" class="col-lg-12">
@@ -43,7 +42,7 @@
                                         <option value="default" selected>Seleccione una Dependencia</option>
                                         @foreach ($dependencias as $item)
                                             @if(is_null($item->parent_id))
-                                                <option {{ old('dependencia-padre') == $item->id ? 'selected' : '' }} value="{{$item->id}}">{{$item->nombre_dependencia}}</option>
+                                                <option value="{{$item->id}}">{{$item->nombre_dependencia}}</option>
                                             @endif
                                         @endforeach
                                     </select>
@@ -353,6 +352,25 @@
 
     </form>
 </div>
+
+
+{{-- Si entre por redireccion por error de validacion, cargo los selects
+de dependencias y tipo de bien con los valores anteriores --}}
+@if($errors->any())
+    @php
+        $dependenciasViejas = session('dependenciasViejas');
+        $tiposBienViejos = session('tiposBienViejos');
+    @endphp
+    <script>
+        //Se cargan los datos viejos de dependencias
+        if({{ $dependenciasViejas !== null }})
+            cargarDependenciasEnError(@json($dependenciasViejas));
+
+        //Se cargan los datos viejos de tipo de bien
+        if({{ $tiposBienViejos !== null }})
+            cargarTiposBienEnError(@json($tiposBienViejos))
+    </script>
+@endif
 
 @endsection
 @push('scripts')

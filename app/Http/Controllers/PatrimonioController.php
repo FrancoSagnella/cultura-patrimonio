@@ -40,7 +40,7 @@ class PatrimonioController extends Controller
 
         //validaciones
         $validator = Validator::make($request->all(), [
-            // 'dependencia-final-seleccionada' => 'required|seleccionado|noDefault',
+            'dependencia-final-seleccionada' => 'required|seleccionado|noDefault',
             'tipobien-final-seleccionado' => 'required|seleccionado|noDefault',
             'usuarioResponsable' => 'required_if:tipobien-final-seleccionado,322,136,63|noDefault_condicional_usuarioResponsable',//Solo requeridos y que no digan default si tipo de bien es 322, 136, 63 (que son handy, telefono celular o computadora portatil)
             'ubicacionReal' => 'required',
@@ -63,7 +63,47 @@ class PatrimonioController extends Controller
         ]);
 
         if($validator->fails()) {
+
+            //Si esta seleccionada al menos una dependencia, las guardo en un array para madarlos de nuevo al front y poder cargar de nuevo los selects
+            $dependenciasViejas = array();
+            if($request->get('dependencia-padre') !== 'default'){
+                array_push($dependenciasViejas, $request->get('dependencia-padre'));
+                for($i = 1;;$i++)
+                {
+                    //Voy iterando buscando los nombres de los inputs que se crearon dinamicamente
+                    //Siempre y cuando sea diferente de default o null, es porque existia y tenia valor que tengo que recuperar
+                    //Caso contrario no existia, ya sea porque no se selecciono valor, o porque la anterior era dependencia final
+                    //En esos dos casos corto el loop, sino guardo el valor en el array para recuperarlo en el front
+                    $nombreParaBuscar = 'dependencia-hija-'.$i;
+                    if( $request->get($nombreParaBuscar) !== 'default' && $request->get($nombreParaBuscar) !== null ){
+                        array_push($dependenciasViejas, $request->get($nombreParaBuscar));
+                    }
+                    else{
+                        break;
+                    }
+                }
+            }
+
+            //Lo mismo de las pedendencias lo hago con los tipos de bien
+            $tiposBienViejos = array();
+            if($request->get('bien-padre') !== 'default'){
+                array_push($tiposBienViejos, $request->get('bien-padre'));
+                for($i = 1;;$i++)
+                {
+                    $nombreParaBuscar = 'bien-hija-'.$i;
+                    if( $request->get($nombreParaBuscar) !== 'default' && $request->get($nombreParaBuscar) !== null ){
+                        array_push($tiposBienViejos, $request->get($nombreParaBuscar));
+                    }
+                    else{
+                        break;
+                    }
+                }
+            }
+
+            //En caso de error redirige denuevo al form, mandando los errores y los valores necesarios para recargar los inputs
             return redirect('patrimonio/create')
+                ->with('dependenciasViejas', $dependenciasViejas)
+                ->with('tiposBienViejos', $tiposBienViejos)
                 ->withErrors($validator)
                 ->withInput();
         }
