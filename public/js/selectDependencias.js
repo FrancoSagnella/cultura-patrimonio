@@ -7,7 +7,7 @@ const seleccionarDependencia = (selectActual, indiceSelectActual, siguienteSelec
     if($("#"+selectActual).val() == 'default')
     {
         //SI selecciona la default de nuevo se limpia todo
-        $("#dependencia-final-seleccionada").val('sinSelecion');
+        $("#dependencia-final-seleccionada").val('sinSeleccion');
         $("#direccion-dependencia").val( 'default' );
         $("#ubicacionReal").val( 'default' );
         $("#responsable").val('default');
@@ -39,7 +39,7 @@ const seleccionarDependencia = (selectActual, indiceSelectActual, siguienteSelec
             $("#dependencias").append(nuevoSelect);
 
             //Si estoy aca es que no era una dependencia final, entonces dejo el valor default de la dependencia final seleccioanda
-            $("#dependencia-final-seleccionada").val('sinSelecion');
+            $("#dependencia-final-seleccionada").val('sinSeleccion');
             $("#direccion-dependencia").val( 'default' );
             $("#responsable").val('default');
             $('#dependencia-seleccionada').hide();
@@ -126,28 +126,53 @@ const cargarResponsables = (idDependencia) => {
 //Lo recorre y va creando los selects que correspondan para recuperar los datos del formulario anterior
 const cargarDependenciasEnError = (dependenciasViejas) => {
 
-    let nombrePadre;
-    let nombreSiguiente;
+    //Si el array esta vacio, corto la funcion
+    if(dependenciasViejas.length > 0){
+        let ultimoSelectCreado = 1;
 
-    for(let i = 0; i < dependenciasViejas.length; i++){
         //Primero carga el valor en el select padre
-        if(i == 0){
-            $("#dependencia-padre").val(dependenciasViejas[i]);
-        }
-        //el resto de iteraciones creo que resto de selects
-        else{
-            //Si el indice es 1, el quiere decir que el anterior select era el padre, entonces uso ese nombre
+        $("#dependencia-padre").val(dependenciasViejas[0]);
+
+        //Creo los select que le siguen
+        for(let i = 1; i < dependenciasViejas.length; i++){
+
             if(i == 1){
-                nombrePadre = 'dependencia-padre';
-                nombreSiguiente = 'dependencia-hija-'+i;
+                //Creo el select que le sigue al padre
+                seleccionarDependencia('dependencia-padre', 0, 'dependencia-hija-1', 1);
+                $("#dependencia-hija-1").val(dependenciasViejas[1]);//Le seteo el valor que tenia antes del error
             }
-            //Sino uso el nombre de los selects hijos
+            //creo el resto de selects que son hijos de los creados dinamicamente
             else{
-                nombrePadre = 'dependencia-hija-'+(i-1);
-                nombreSiguiente = 'dependencia-hija-'+i;
+                seleccionarDependencia('dependencia-hija-'+(i-1), i-1, 'dependencia-hija-'+i, i);
+                $("#dependencia-hija-"+(i)).val(dependenciasViejas[i]);//Le seteo el valor que tenia antes del error
             }
-            seleccionarDependencia(nombrePadre, i-1, nombreSiguiente, i);
+
+            ultimoSelectCreado = i;
+        }
+
+        //Ahora ya cree los selects con valores anteriores, tengo que saber si era uno final (y mostrar direccion real y responsable)
+        //O si no era final, entonces tengo que crear un select nuevo abajo
+        //Esto lo si si el input dependencia-final-seleccionada tiene valor distinto a 'sinSeleccion'
+        if($("#dependencia-final-seleccionada").val() != 'sinSeleccion'){
+            //Si es distinto a sinSeleccion, quiere decir que el valor del ultimo select que cargue era final, tonces no creo mas selects
+            //y muestro los campos de Direccion y responsable (que ya deberian haber traido su valor con el old o estar vacios si es que no se les habia cargado nada)
+
+            $('#dependencia-seleccionada').show();
+
+        }
+        //Si el valor es sinSeleccion, tengo que crear un select nuevo vacio, hijo del ultimo que cree
+        else{
+            //Si esto es mayor que uno, quiere decir que ta todo bien, no era select final y crea uno vacio
+            if(ultimoSelectCreado > 1){
+                seleccionarDependencia('dependencia-hija-'+ultimoSelectCreado, ultimoSelectCreado, 'dependencia-hija-'+(ultimoSelectCreado+1), ultimoSelectCreado+1);
+            }
+            //Ahora si era igual a uno, quiere decir que solo se habia seleccionado el padre de todos, entonces al crear el ultimo vacio
+            //tengo que hacer que sea hijo del dependencia-padre
+            else if(ultimoSelectCreado == 1){
+                seleccionarDependencia('dependencia-padre', 0, 'dependencia-hija-'+(ultimoSelectCreado), ultimoSelectCreado);
+            }//Si no se habia seleccionado ni el padre de todos, esto ya ni se ejecuta asi que np
         }
     }
+
 
 }

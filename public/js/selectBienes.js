@@ -5,7 +5,7 @@ const seleccionarBien = (selectActual, indiceSelectActual, siguienteSelect, indi
     verificarHijosBienes(indiceSelectActual);
 
     if($("#"+selectActual).val() == 'default'){
-        $("#tipobien-final-seleccionado").val('sinSelecion');
+        $("#tipobien-final-seleccionado").val('sinSeleccion');
         $("#nroSerie").val('default');
         $("#marca").val('default');
         $("#modelo").val('default');
@@ -41,7 +41,7 @@ const seleccionarBien = (selectActual, indiceSelectActual, siguienteSelect, indi
             $("#modelo").val('default');
             $('#usuario-responsable').hide();
             $("#usuarioResponsable").val('default');
-            $("#tipobien-final-seleccionado").val('sinSelecion');
+            $("#tipobien-final-seleccionado").val('sinSeleccion');
         }
         else{
             let idSeleccionada = $("#"+selectActual).val();
@@ -88,7 +88,6 @@ const mostrarSerie = (idTipoBien) => {
 //Recibe parendId (que seria id de la dependencia del select actual, que va a ser el padre)
 const filtrarBienes = (parentId) => {
     return tipos_bien.filter(element => {
-        console.log(element, parentId);
         return element.parent_id == parentId;
     });
 }
@@ -117,5 +116,71 @@ const verificarHijosBienes = (indiceActual) => {
 //Recibe el array con todas los tipos de bien que estaban seleccionadas en el select antes del error
 //Lo recorre y va creando los selects que correspondan para recuperar los datos del formulario anterior
 const cargarTiposBienEnError = (tiposBienViejos) => {
-    console.log(tiposBienViejos);
+    let valorTipoBienFinal = $("#tipobien-final-seleccionado").val();
+
+    //Si el array esta vacio, corto la funcion
+    if(tiposBienViejos.length > 0){
+        let ultimoSelectCreado = -1;
+
+        //Primero carga el valor en el select padre
+        $("#bien-padre").val(tiposBienViejos[0]);
+
+        //Creo los select que le siguen
+        for(let i = 1; i < tiposBienViejos.length; i++){
+
+            if(i == 1){
+                //Creo el select que le sigue al padre
+                seleccionarBien('bien-padre', 0, 'bien-hija-1', 1);
+                $("#bien-hija-1").val(tiposBienViejos[1]);//Le seteo el valor que tenia antes del error
+            }
+            //creo el resto de selects que son hijos de los creados dinamicamente
+            else{
+                seleccionarBien('bien-hija-'+(i-1), i-1, 'bien-hija-'+i, i);
+                $("#bien-hija-"+(i)).val(tiposBienViejos[i]);//Le seteo el valor que tenia antes del error
+            }
+
+            ultimoSelectCreado = i;
+        }
+
+        $("#tipobien-final-seleccionado").val(valorTipoBienFinal);
+        //Ahora ya cree los selects con valores anteriores, tengo que saber si era uno final (y mostrar direccion real y responsable)
+        //O si no era final, entonces tengo que crear un select nuevo abajo
+        //Esto lo si si el input dependencia-final-seleccionada tiene valor distinto a 'sinSeleccion'
+        if($("#tipobien-final-seleccionado").val() != 'sinSeleccion'){
+            //Si es distinto a sinSeleccion, quiere decir que el valor del ultimo select que cargue era final, tonces no creo mas selects
+            //y muestro los campos de Direccion y responsable (que ya deberian haber traido su valor con el old o estar vacios si es que no se les habia cargado nada)
+
+            let idSeleccionada = $("#tipobien-final-seleccionado").val();
+            if(mostrarSerie(idSeleccionada)){
+                $('#seccion-nro-serie').show();
+            } else {
+                $('#seccion-nro-serie').hide();
+                $("#nroSerie").val('default');
+                $("#marca").val('default');
+                $("#modelo").val('default');
+            }
+
+            if(mostrarUsuarioResponsable(idSeleccionada)){
+                $('#usuario-responsable').show();
+            } else {
+                $('#usuario-responsable').hide();
+                $("#usuarioResponsable").val('default');
+            }
+
+        }
+        //Si el valor es sinSeleccion, tengo que crear un select nuevo vacio, hijo del ultimo que cree
+        else{
+            //Si esto es mayor que uno, quiere decir que ta todo bien, no era select final y crea uno vacio
+            if(ultimoSelectCreado > 1){
+                seleccionarBien('bien-hija-'+ultimoSelectCreado, ultimoSelectCreado, 'bien-hija-'+(ultimoSelectCreado+1), ultimoSelectCreado+1);
+            }
+            //Ahora si era igual a -uno, quiere decir que solo se habia seleccionado el padre de todos, entonces al crear el ultimo vacio
+            //tengo que hacer que sea hijo del bien-padre
+            else if(ultimoSelectCreado == -1){
+                seleccionarBien('bien-padre', 0, 'bien-hija-1', 1);
+            }//Si no se habia seleccionado ni el padre de todos, esto ya ni se ejecuta asi que np
+        }
+    }
+
+
 }

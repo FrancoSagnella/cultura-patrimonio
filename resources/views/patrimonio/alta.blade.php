@@ -109,7 +109,7 @@
                         </div>
                         {{-- Inpout hide para guardar la ultima dependencia seleccionada, si no se selecciona
                             dependencia d mas bajo nivel, tiene valor deafault 'sinSeleccion' --}}
-                            <input type="hidden" id="tipobien-final-seleccionado" name="tipobien-final-seleccionado" value="sinSeleccion">
+                            <input type="hidden" id="tipobien-final-seleccionado" name="tipobien-final-seleccionado" value="{{ old('tipobien-final-seleccionado') ?? 'sinSeleccion' }}">
                     </div>
 
 
@@ -363,12 +363,10 @@ de dependencias y tipo de bien con los valores anteriores --}}
     @endphp
     <script>
         //Se cargan los datos viejos de dependencias
-        if({{ $dependenciasViejas !== null }})
-            cargarDependenciasEnError(@json($dependenciasViejas));
+        cargarDependenciasEnError(@json($dependenciasViejas));
 
         //Se cargan los datos viejos de tipo de bien
-        if({{ $tiposBienViejos !== null }})
-            cargarTiposBienEnError(@json($tiposBienViejos))
+        cargarTiposBienEnError(@json($tiposBienViejos));
     </script>
 @endif
 
