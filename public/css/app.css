@@ -71,7 +71,7 @@ footer {
     position: fixed;
     top: 0;
     left: 0;
-    width: 25vh; /* Ancho del menú */
+    /* width: 25vh;*/ /*Ancho del menú  */
     background-color: #37bbed; /* Color de fondo del menú */
     height: 100vh; /* Altura del menú igual al alto de la ventana */
     color: white; /* Color del texto en el menú */
@@ -96,8 +96,16 @@ footer {
 }
 
 /* Estilo para el contenido principal */
+
+/* aplica el margen de la pagina respecto al menu, si se agregan medias cuando se haga el responsive, se puede tocar solo esto */
+.contenedor-pagina{
+    margin-left: 217px;
+}
+.secciones-footer{
+    font-size: 0.9rem; 
+    border-right: 2px solid white;
+}
 .content {
-    margin-left: 25vh;
     padding: 20px;
     box-sizing: border-box;
     min-height: calc(100vh - 13.803vh);
