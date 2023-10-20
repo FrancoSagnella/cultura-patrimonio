@@ -20,17 +20,50 @@
         @stack('scripts')
 
     </head>
-    <header>
-        <div class="container">
-            <div class="row">
-                <div class="mt-md-4 col-md-4 offset-md-5">
-                    <h1 class="text-celeste-argentina">Sistema de Patrimonio</h1>
-                </div>
-            </div>
-        </div>
-    </header>
-
     <body>
+        {{-- Contenedor de la pagina excluyendo el menú lateral --}}
+        <div class="contenedor-pagina">
+            {{-- Encabezado pagina --}}
+            <header>
+                <div class="container">
+                    <div class="row">
+                        <div class="d-flex justify-content-center">
+                            <h1 class="text-celeste-argentina">Sistema de Patrimonio</h1>
+                        </div>
+                    </div>
+                </div>
+            </header>  
+            {{-- Contenido de la pagina --}}
+            <div class="content">
+
+                @yield('content')
+
+            </div> 
+            {{-- Footer --}}
+            <footer>
+                <div class="footer bg-celeste-argentina">
+                    <div class="container-fluid">
+                        <div class="row justify-content-end">
+                            <div class="secciones-footer col-md-2 my-3 mx-md-3 d-flex justify-content-center">
+                                <div class="mt-md-2">
+                                    Sistema de Patrimonio <br>
+                                    Ministerio de Cultura de la Nacion
+                                </div>
+                            </div>
+                            <div class="secciones-footer col-md-2 my-3 mx-md-3 d-flex justify-content-center">
+                                Tel. [+54] +11 4129-2400 <br>
+                                Dirección: Av. Alvear 1690 <br>
+                                Ciudad de Buenos Aires, Argentina
+                            </div>
+                            <div class="col-md-2 my-3 mx-md-3 d-flex justify-content-center" style="min-width: 227px;">
+                                <img src="{{ asset('img/Logo Ministerio Cultura Footer.png') }}" height="70">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>           
+        </div>
+ 
         {{-- Menu Lateral --}}
         <div class="menu" id="sticky-menu">
             <div class="text-center">
@@ -148,12 +181,7 @@
 
         </div>
 
-        {{-- Contenido de la pagina --}}
-        <div class="content">
 
-            @yield('content')
-
-        </div>
 
         {{-- <script>
             window.addEventListener("scroll", function() {
@@ -171,26 +199,4 @@
         </script> --}}
     </body>
 
-    <footer>
-        <div class="footer bg-celeste-argentina">
-            <div class="container-fluid">
-                <div class="row justify-content-end">
-                    <div class="col-md-2 mt-md-3 mb-md-3 mx-md-3" style="font-size: 0.9rem; border-right: 2px solid white">
-                        <div class="mt-md-2">
-                            Sistema de Patrimonio <br>
-                            Ministerio de Cultura de la Nacion
-                        </div>
-                    </div>
-                    <div class="col-md-2 my-3 mx-3" style="font-size: 0.9rem; border-right: 2px solid white">
-                        Tel. [+54] +11 4129-2400 <br>
-                        Dirección: Av. Alvear 1690 <br>
-                        Ciudad de Buenos Aires, Argentina
-                    </div>
-                    <div class="col-md-1 my-md-3 mx-md-5">
-                        <img class="" src="{{ asset('img/Logo Ministerio Cultura Footer.png') }}" height="70">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 </html>
