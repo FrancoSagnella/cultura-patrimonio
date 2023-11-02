@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\auth\LoginController;
+use App\Http\Controllers\ComplejoController;
+use App\Http\Controllers\OficinaController;
 use App\Http\Controllers\PatrimonioController;
+use App\Http\Controllers\PisoController;
+use App\Http\Controllers\UnidadFuncionalController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,3 +38,8 @@ Route::prefix('patrimonio')->group(function () {
     Route::get('/create', [PatrimonioController::class, 'create'])->name('patrimonio.create');
     Route::post('/', [PatrimonioController::class, 'store'])->name('patrimonio.store');
 });
+
+Route::resource('complejos', ComplejoController::class);
+Route::resource('unidades-funcionales', UnidadFuncionalController::class);
+Route::resource('pisos', PisoController::class);
+Route::resource('oficinas', OficinaController::class);
