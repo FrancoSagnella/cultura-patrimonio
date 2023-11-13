@@ -96,99 +96,22 @@
 
 
             <div>
-                <a data-bs-toggle="collapse" href="#collapseUbicaciones" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    <h5>Ubicaciones</h5>
-                </a>
-            </div>
-            <div class="collapse" id="collapseUbicaciones">
-                <div class="">
-                    <a class="links-texto" href="{{ route('complejos.create') }}">Alta de Complejo/Edificio</a><br>
-                    <a class="links-texto" href="">Alta de Unidad Funcional</a><br>
-                    <a class="links-texto" href="">Alta de Piso</a><br>
-                    <a class="links-texto" href="">Alta de Oficina</a><br>
-                </div>
-            </div>
-
-
-            <div>
-                <a data-bs-toggle="collapse" href="#collapseDependencia" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    <h5>Dependencia</h5>
-                </a>
-            </div>
-            <div class="collapse" id="collapseDependencia">
-                <div class="">
-                    <a class="links-texto" href="">Listado de Dependencias</a><br>
-                    <a class="links-texto" href="">Alta Dependencia</a><br>
-                    <a class="links-texto" href="">Listado de Responsables</a><br>
-                    <a class="links-texto" href="">Alta de Responsables</a><br>
-                </div>
-            </div>
-
-
-
-
-            <div>
-                <a data-bs-toggle="collapse" href="#collapseTipoBien" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    <h5>Tipo de Bien</h5>
-                </a>
-            </div>
-            <div class="collapse" id="collapseTipoBien">
-                <div class="">
-                    <a class="links-texto" href="">Listado Tipo de Bien</a><br>
-                    <a class="links-texto" href="">Alta Tipo de Bien</a>
-                    <br>
-                </div>
-            </div>
-
-
-
-            <div>
-                <a data-bs-toggle="collapse" href="#collapseProveedor" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    <h5>Proveedor</h5>
-                </a>
-            </div>
-            <div class="collapse" id="collapseProveedor">
-
-            </div>
-
-
-
-            <div>
                 <a data-bs-toggle="collapse" href="#collapseAdministracion" role="button" aria-expanded="false" aria-controls="collapseExample">
                     <h5>Administración</h5>
                 </a>
             </div>
             <div class="collapse" id="collapseAdministracion">
                 <div class="">
-                    <a class="links-texto" href="">Usuarios Gerenciales</a><br>
-                    <a class="links-texto" href="">Grupos</a><br>
-                    <a class="links-texto" href="">Permisos</a><br>
-                </div>
-            </div>
-
-
-
-            <div>
-                <a data-bs-toggle="collapse" href="#collapseItems" role="button" aria-expanded="false" aria-controls="collapseExample">
-                    <h5>Items</h5>
-                </a>
-            </div>
-            <div class="collapse" id="collapseItems">
-                <div class="">
-                    <a class="links-texto" href="">Listado Tipo de Baja</a><br>
-                    <a class="links-texto" href="">Alta Tipo de Baja</a><br>
-                    <a class="links-texto" href="">Listado Tipo de Bien</a><br>
-                    <a class="links-texto" href="">Alta Tipo de Bien</a><br>
-                    <a class="links-texto" href="">Listado Tipo de Asignacion</a><br>
-                    <a class="links-texto" href="">Alta Tipo de Asignacion</a><br>
-                    <a class="links-texto" href="">Listado Tipo de Responsable</a><br>
-                    <a class="links-texto" href="">Alta Tipo de Responsable</a><br>
-                    <a class="links-texto" href="">Listado Tipo de Remito</a><br>
-                    <a class="links-texto" href="">Alta tipo de Remito</a><br>
-                    <a class="links-texto" href="">Listado de Universo</a><br>
-                    <a class="links-texto" href="">Alta de Universo</a><br>
-                    <a class="links-texto" href="">Listado de Proveedores</a><br>
-                    <a class="links-texto" href="">Alta de Proveedores</a><br>
+                    <a class="links-texto" href="{{ route('ubicaciones.index') }}">Ubicaciones</a><br>
+                    <a class="links-texto" href="">Dependencias</a><br>
+                    <a class="links-texto" href="">Proveedores</a><br>
+                    <a class="links-texto" href="">Tipos de Baja</a><br>
+                    <a class="links-texto" href="{{ route('tipos-ingreso.index') }}">Tipos de Ingreso</a><br>
+                    <a class="links-texto" href="{{ route('tipos-bien.index') }}">Tipos de Bien</a><br>
+                    <a class="links-texto" href="">Tipos de Asignacion</a><br>
+                    <a class="links-texto" href="">Tipos de Responsable</a><br>
+                    <a class="links-texto" href="">Tipos de Remito</a><br>
+                    <a class="links-texto" href="">Universos</a><br>
                 </div>
             </div>
 
