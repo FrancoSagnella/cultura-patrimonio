@@ -8,7 +8,7 @@
     <div class="row justify-content-center mt-3">
         <div class="col-md-4 titulo-redondeado-celeste">
             <div class="row text-center">
-                <h1>Alta de Cmplejo / Edificio</h1>
+                <h1>Alta de Complejo / Edificio</h1>
             </div>
         </div>
     </div>

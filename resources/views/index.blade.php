@@ -102,7 +102,7 @@
             </div>
             <div class="collapse" id="collapseUbicaciones">
                 <div class="">
-                    <a class="links-texto" href="">Alta de Complejo/Edificio</a><br>
+                    <a class="links-texto" href="{{ route('complejos.create') }}">Alta de Complejo/Edificio</a><br>
                     <a class="links-texto" href="">Alta de Unidad Funcional</a><br>
                     <a class="links-texto" href="">Alta de Piso</a><br>
                     <a class="links-texto" href="">Alta de Oficina</a><br>
