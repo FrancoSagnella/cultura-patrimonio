@@ -36,6 +36,7 @@ class PatrimonioController extends Controller
                                       ->with('responsables', $responsables);
     }
 
+    //todo: crear request custom, crear un service para injectar dependencia y modularizar validaciones y demas
     public function store(Request $request){
 
         //validaciones

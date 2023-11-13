@@ -32,13 +32,13 @@
                         </div>
                     </div>
                 </div>
-            </header>  
+            </header>
             {{-- Contenido de la pagina --}}
             <div class="content">
 
                 @yield('content')
 
-            </div> 
+            </div>
             {{-- Footer --}}
             <footer>
                 <div class="footer bg-celeste-argentina">
@@ -61,9 +61,9 @@
                         </div>
                     </div>
                 </div>
-            </footer>           
+            </footer>
         </div>
- 
+
         {{-- Menu Lateral --}}
         <div class="menu" id="sticky-menu">
             <div class="text-center">
@@ -94,6 +94,20 @@
                 </div>
             </div>
 
+
+            <div>
+                <a data-bs-toggle="collapse" href="#collapseUbicaciones" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <h5>Ubicaciones</h5>
+                </a>
+            </div>
+            <div class="collapse" id="collapseUbicaciones">
+                <div class="">
+                    <a class="links-texto" href="{{ route('complejos.create') }}">Alta de Complejo/Edificio</a><br>
+                    <a class="links-texto" href="">Alta de Unidad Funcional</a><br>
+                    <a class="links-texto" href="">Alta de Piso</a><br>
+                    <a class="links-texto" href="">Alta de Oficina</a><br>
+                </div>
+            </div>
 
 
             <div>
