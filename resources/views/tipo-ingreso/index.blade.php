@@ -9,11 +9,6 @@
         <div class="col-md-4 titulo-redondeado-celeste">
             <div class="row text-center">
                 <h1>Tipos de Ingreso</h1>
-                {{-- <button onclick="altaTipoIngreso()">Alta</button> --}}
-                <button onclick="altaTipoIngreso()" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Launch demo modal
-                </button>
-
             </div>
         </div>
     </div>
@@ -25,7 +20,11 @@
                   <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Ingreso</th>
-                    <th scope="col">Acciones</th>
+                    <th scope="col">
+                        <button onclick="mostrarFormAltaTipoIngreso()" type="button" class="btn btn-success botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
+                            Nuevo Tipo de Ingreso
+                        </button>
+                    </th>
                   </tr>
                 </thead>
                 <tbody>
@@ -33,7 +32,14 @@
                         <tr>
                             <td>{{ $ingreso->id }}</td>
                             <td>{{ $ingreso->ingreso }}</td>
-                            <td>Editar / Deshabilitar</td>
+                            <td>
+                                <button onclick="mostrarFormEditarTipoIngreso({{ $ingreso->id }})" type="button" class="btn btn-primary botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
+                                    Editar
+                                </button>
+                                <button onclick="mostrarFormDeshabilitarTipoIngreso({{ $ingreso->id }})" type="button" class="btn btn-danger botones-redondos" >
+                                    Deshabilitar
+                                </button>
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>
@@ -42,18 +48,16 @@
     </div>
 </div>
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="ModalLabel">Alta de Tipo de Ingreso</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" id="modal-body">
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>

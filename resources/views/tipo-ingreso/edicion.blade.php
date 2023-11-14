@@ -1,4 +1,4 @@
-<form action="/tipos-ingreso" method="post" enctype="multipart/form-data" id="formAlta">
+<form action="/tipos-ingreso/{{ $ingreso->id }}" method="put" enctype="multipart/form-data" id="formEditar">
     @csrf
     {{-- Nombre Ingreso input --}}
     <div class="container">
@@ -7,7 +7,7 @@
                 Ingreso
             </div>
             <div class="col-8 mt-3">
-                <input class="form-control" type="text" name="ingreso" id="ingreso">
+                <input class="form-control" type="text" name="ingreso" id="ingreso" value="{{ $ingreso->ingreso }}">
             </div>
         </div>
         {{-- Nombre Ingreso input --}}
@@ -17,7 +17,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
             <div class="col-6">
-                <button type="button" class="btn btn-primary" onclick="enviarFormAltaTipoIngreso()">Guardar</button>
+                <button type="button" class="btn btn-primary" onclick="enviarFormEditarTipoIngreso({{ $ingreso->id }})">Guardar</button>
             </div>
         </div>
     </div>
