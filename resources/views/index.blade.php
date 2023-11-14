@@ -103,6 +103,7 @@
             <div class="collapse" id="collapseAdministracion">
                 <div class="">
                     <a class="links-texto" href="{{ route('ubicaciones.index') }}">Ubicaciones</a><br>
+                    <a class="links-texto" href="">Direcciones</a><br>
                     <a class="links-texto" href="">Dependencias</a><br>
                     <a class="links-texto" href="">Proveedores</a><br>
                     <a class="links-texto" href="">Tipos de Baja</a><br>
