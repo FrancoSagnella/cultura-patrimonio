@@ -18,31 +18,23 @@
             <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">id</th>
+                    <th scope="col">parent_id</th>
+                    <th scope="col">codigo_presup</th>
+                    <th scope="col">tipo_bien</th>
+                    <th scope="col">descripcion_bien</th>
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach ($tiposBien as $tipoBien)
                   <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                    <td class="text-center">{{$tipoBien->id}}</td>
+                    <td class="text-center">{{$tipoBien->parent_id ? $tipoBien->parent_id : '-'   }}</td>
+                    <td class="text-center">{{$tipoBien->codigo_presup}}</td>
+                    <td>{{$tipoBien->tipo_bien}}</td>
+                    <td>{{$tipoBien->descripcion_bien}}</td>
                   </tr>
-                  <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                  </tr>
+                  @endforeach
                 </tbody>
               </table>
         </div>
