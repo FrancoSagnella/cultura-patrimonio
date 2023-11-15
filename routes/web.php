@@ -50,4 +50,7 @@ Route::resource('oficinas', OficinaController::class);
 
 Route::resource('ubicaciones', UbicacionesController::class);
 Route::resource('tipos-bien', TipoBienController::class);
+
 Route::resource('tipos-ingreso', TipoIngresoController::class);
+Route::get('tipos-ingreso/deshabilitar/{id}', [TipoIngresoController::class, 'disable'])->name('tipos-ingreso.disable');
+Route::get('tipos-ingreso/habilitar/{id}', [TipoIngresoController::class, 'enable'])->name('tipos-ingreso.enable');
