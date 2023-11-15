@@ -59,6 +59,7 @@ class TipoIngresoController extends Controller
         //Si la validacion se pasa, hago el alta
         $tipoIngreso = new TipoIngreso();
         $tipoIngreso->ingreso = $request->get('ingreso');
+        $tipoIngreso->habilitado = 1;
         $tipoIngreso->save();
 
         return response()->json($response);
@@ -130,5 +131,43 @@ class TipoIngresoController extends Controller
     public function destroy($id)
     {
 
+    }
+
+    /**
+     * Disable the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function disable($id)
+    {
+        //creo response
+        $response = new stdClass();
+        $response->message = "ok";
+
+        $tipoIngreso = TipoIngreso::where('id', $id)->first();
+        $tipoIngreso->habilitado = 0;
+        $tipoIngreso->save();
+
+        return response()->json($response);
+    }
+
+    /**
+     * Enable the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function enable($id)
+    {
+        //creo response
+        $response = new stdClass();
+        $response->message = "ok";
+
+        $tipoIngreso = TipoIngreso::where('id', $id)->first();
+        $tipoIngreso->habilitado = 1;
+        $tipoIngreso->save();
+
+        return response()->json($response);
     }
 }

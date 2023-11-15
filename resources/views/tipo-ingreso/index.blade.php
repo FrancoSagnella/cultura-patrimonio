@@ -36,9 +36,15 @@
                                 <button onclick="mostrarFormEditarTipoIngreso({{ $ingreso->id }})" type="button" class="btn btn-primary botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                                     Editar
                                 </button>
-                                <button onclick="mostrarFormDeshabilitarTipoIngreso({{ $ingreso->id }})" type="button" class="btn btn-danger botones-redondos" >
-                                    Deshabilitar
-                                </button>
+                                @if(!$ingreso->habilitado)
+                                    <button onclick="habilitarTipoIngreso({{ $ingreso->id }})" type="button" class="btn btn-success botones-redondos" >
+                                        Habilitar
+                                    </button>
+                                @else
+                                    <button onclick="deshabilitarTipoIngreso({{ $ingreso->id }})" type="button" class="btn btn-danger botones-redondos" >
+                                        Deshabilitar
+                                    </button>
+                                @endif
                             </td>
                         </tr>
                     @endforeach

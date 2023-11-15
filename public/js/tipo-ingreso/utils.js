@@ -44,24 +44,39 @@ const enviarFormEditarTipoIngreso = (id) => {
             }
             else{
                 $('#Modal').modal('toggle');
-                //Esto es un parche xd, es para recargar la p[agina una vez hecha el alta, hay una libreria llamada livewire que deja hacerlo funcionar como sngular, podriamos investigarla
                 location.reload();
             }
         }
       });
 }
 
-const mostrarFormDeshabilitarTipoIngreso = () => {
+const deshabilitarTipoIngreso = (id) => {
 
     $.ajax({
-        url: '/tipos-ingreso/'+id,
-        type: 'DELETE',
+        url: '/tipos-ingreso/deshabilitar/'+id,
+        type: 'GET',
         success: (data)=>{
             if(data.errors){
                 console.log(data);
             }
             else{
-                //Esto es un parche xd, es para recargar la p[agina una vez hecha el alta, hay una libreria llamada livewire que deja hacerlo funcionar como sngular, podriamos investigarla
+                location.reload();
+            }
+        }
+      });
+
+}
+
+const habilitarTipoIngreso = (id) => {
+
+    $.ajax({
+        url: '/tipos-ingreso/habilitar/'+id,
+        type: 'GET',
+        success: (data)=>{
+            if(data.errors){
+                console.log(data);
+            }
+            else{
                 location.reload();
             }
         }
