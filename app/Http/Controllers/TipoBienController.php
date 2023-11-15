@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TipoBien;
+use App\Models\TipoBienAmortizacion;
+use Paginator\Paginator;
 
 class TipoBienController extends Controller
 {
@@ -14,7 +16,7 @@ class TipoBienController extends Controller
      */
     public function index()
     {
-        $tiposBien = TipoBien::all();
+        $tiposBien = TipoBien::paginate(20);
         return view('tipo-bien.index')->with('tiposBien', $tiposBien);
     }
 
@@ -27,6 +29,7 @@ class TipoBienController extends Controller
     {
         $tiposBienAmortizacion = TipoBienAmortizacion::all();
 
+        return view('tipo-bien.altaTipoBien')->with('tiposBienAmortizacion', $tiposBienAmortizacion);
 
     }
 
