@@ -7,6 +7,7 @@ use App\Http\Controllers\PatrimonioController;
 use App\Http\Controllers\PisoController;
 use App\Http\Controllers\TipoBienController;
 use App\Http\Controllers\TipoIngresoController;
+use App\Http\Controllers\TipoAsignacionController;
 use App\Http\Controllers\UbicacionesController;
 use App\Http\Controllers\UnidadFuncionalController;
 use Illuminate\Support\Facades\Route;
@@ -54,3 +55,5 @@ Route::resource('tipos-bien', TipoBienController::class);
 Route::resource('tipos-ingreso', TipoIngresoController::class);
 Route::get('tipos-ingreso/deshabilitar/{id}', [TipoIngresoController::class, 'disable'])->name('tipos-ingreso.disable');
 Route::get('tipos-ingreso/habilitar/{id}', [TipoIngresoController::class, 'enable'])->name('tipos-ingreso.enable');
+
+Route::resource('tipos-asignacion', TipoAsignacionController::class);

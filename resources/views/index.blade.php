@@ -109,7 +109,7 @@
                     <a class="links-texto" href="">Tipos de Baja</a><br>
                     <a class="links-texto" href="{{ route('tipos-ingreso.index') }}">Tipos de Ingreso</a><br>
                     <a class="links-texto" href="{{ route('tipos-bien.index') }}">Tipos de Bien</a><br>
-                    <a class="links-texto" href="">Tipos de Asignacion</a><br>
+                    <a class="links-texto" href="{{ route('tipos-asignacion.index') }}">Tipos de Asignacion</a><br>
                     <a class="links-texto" href="">Tipos de Responsable</a><br>
                     <a class="links-texto" href="">Tipos de Remito</a><br>
                     <a class="links-texto" href="">Universos</a><br>
