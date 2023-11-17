@@ -17,7 +17,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
             <div class="col-6">
-                <button type="button" class="btn btn-primary" onclick="enviarFormAltaTipoIngreso()">Guardar</button>
+                <button type="button" class="btn btn-primary" onclick="enviarFormAlta('tipos-ingreso')">Guardar</button>
             </div>
         </div>
     </div>

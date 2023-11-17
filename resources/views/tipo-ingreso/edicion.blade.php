@@ -17,7 +17,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
             </div>
             <div class="col-6">
-                <button type="button" class="btn btn-primary" onclick="enviarFormEditarTipoIngreso({{ $ingreso->id }})">Guardar</button>
+                <button type="button" class="btn btn-primary" onclick="enviarFormEditar('tipos-ingreso', {{ $ingreso->id }})">Guardar</button>
             </div>
         </div>
     </div>
