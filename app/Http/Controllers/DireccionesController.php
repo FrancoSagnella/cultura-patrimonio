@@ -2,14 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TipoIngreso;
+use App\Models\Direccion;
+use App\Models\Provincia;
 use Exception;
-use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use stdClass;
 
-class TipoIngresoController extends Controller
+class DireccionesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +19,11 @@ class TipoIngresoController extends Controller
      */
     public function index()
     {
-        $tiposIngreso = TipoIngreso::all();
-        return view('tipo-ingreso.index')->with('tiposIngreso', $tiposIngreso);
+        $direcciones = DB::table('dir')
+                            ->join('provincia', 'provincia.id', '=', 'dir.prov_id')
+                            ->select('dir.*', 'provincia.nombre_provincia')
+                            ->get();
+        return view('direcciones.index')->with('direcciones', $direcciones);
     }
 
     /**
@@ -29,7 +33,8 @@ class TipoIngresoController extends Controller
      */
     public function create()
     {
-        return view('tipo-ingreso.alta');
+        $provincias = Provincia::all();
+        return view('direcciones.alta')->with('provincias', $provincias);
     }
 
     /**
@@ -46,7 +51,12 @@ class TipoIngresoController extends Controller
 
         //se validan inputs
         $validator = Validator::make($request->all(), [
-            'ingreso' => 'required|max:255',
+            'prov_id' => 'required',
+            'loc' => 'required|max:255',
+            'cp' => 'required|max:255',
+            'calle' => 'required|max:255',
+            'nro' => 'required|max:255',
+            'tel' => 'required|max:255'
         ]);
 
         //en caso de error en validacion, seteo errors en el response y devuelvo
@@ -57,8 +67,14 @@ class TipoIngresoController extends Controller
             return response()->json($response);
         }
 
-        //Si la validacion se pasa, hago el alta
-        TipoIngreso::create($request->except('_token'));
+        try{
+
+            //Si la validacion se pasa, hago el alta
+            Direccion::create($request->except('_token'));
+        }
+        catch(Exception $e){
+            return response()->json($e->getMessage());
+        }
 
         return response()->json($response);
     }
@@ -82,8 +98,10 @@ class TipoIngresoController extends Controller
      */
     public function edit($id)
     {
-        $tipoIngreso = TipoIngreso::where('id', $id)->first();
-        return view('tipo-ingreso.edicion')->with('ingreso', $tipoIngreso);
+        $direccion = Direccion::where('id', $id)->first();
+        $provincias = Provincia::all();
+        return view('direcciones.edicion')->with('direccion', $direccion)
+                                            ->with('provincias', $provincias);
     }
 
     /**
@@ -101,7 +119,12 @@ class TipoIngresoController extends Controller
 
         //se validan inputs
         $validator = Validator::make($request->all(), [
-            'ingreso' => 'required|max:255',
+            'prov_id' => 'required',
+            'loc' => 'required|max:255',
+            'cp' => 'required|max:255',
+            'calle' => 'required|max:255',
+            'nro' => 'required|max:255',
+            'tel' => 'required|max:255'
         ]);
 
         //en caso de error en validacion, seteo errors en el response y devuelvo
@@ -113,9 +136,14 @@ class TipoIngresoController extends Controller
         }
 
         //Si la validacion se pasa, hago el alta
-        $tipoIngreso = TipoIngreso::where('id', $id)->first();
-        $tipoIngreso->ingreso = $request->get('ingreso');
-        $tipoIngreso->save();
+        $direccion = Direccion::where('id', $id)->first();
+        $direccion->prov_id = $request->get('prov_id');
+        $direccion->loc = $request->get('loc');
+        $direccion->cp = $request->get('cp');
+        $direccion->calle = $request->get('calle');
+        $direccion->nro = $request->get('nro');
+        $direccion->tel = $request->get('tel');
+        $direccion->save();
 
         return response()->json($response);
     }
@@ -128,44 +156,6 @@ class TipoIngresoController extends Controller
      */
     public function destroy($id)
     {
-
-    }
-
-    /**
-     * Disable the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function disable($id)
-    {
-        //creo response
-        $response = new stdClass();
-        $response->message = "ok";
-
-        $tipoIngreso = TipoIngreso::where('id', $id)->first();
-        $tipoIngreso->habilitado = 0;
-        $tipoIngreso->save();
-
-        return response()->json($response);
-    }
-
-    /**
-     * Enable the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function enable($id)
-    {
-        //creo response
-        $response = new stdClass();
-        $response->message = "ok";
-
-        $tipoIngreso = TipoIngreso::where('id', $id)->first();
-        $tipoIngreso->habilitado = 1;
-        $tipoIngreso->save();
-
-        return response()->json($response);
+        //
     }
 }

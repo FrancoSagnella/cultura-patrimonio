@@ -2,11 +2,15 @@
 
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\ComplejoController;
+use App\Http\Controllers\DependenciasController;
+use App\Http\Controllers\DireccionesController;
 use App\Http\Controllers\OficinaController;
 use App\Http\Controllers\PatrimonioController;
 use App\Http\Controllers\PisoController;
+use App\Http\Controllers\ResponsablesController;
 use App\Http\Controllers\TipoBienController;
 use App\Http\Controllers\TipoIngresoController;
+use App\Http\Controllers\TipoResponsableController;
 use App\Http\Controllers\UbicacionesController;
 use App\Http\Controllers\UnidadFuncionalController;
 use Illuminate\Support\Facades\Route;
@@ -35,7 +39,7 @@ Route::prefix('auth')->group(function () {
 
 });
 
-//Patrimonio routes
+//Rutas de Seccion Core
 Route::prefix('patrimonio')->group(function () {
     Route::get('/', [PatrimonioController::class, 'index'])->name('patrimonio.index');
     Route::get('/create', [PatrimonioController::class, 'create'])->name('patrimonio.create');
@@ -43,12 +47,19 @@ Route::prefix('patrimonio')->group(function () {
 });
 
 //Rutas de Seccion Administracion
+Route::resource('tipos-responsable', TipoResponsableController::class);
+Route::resource('responsables', ResponsablesController::class);
+
+Route::resource('dependencias', DependenciasController::class);
+
+Route::resource('direcciones', DireccionesController::class);
+
 Route::resource('complejos', ComplejoController::class);
 Route::resource('unidades-funcionales', UnidadFuncionalController::class);
 Route::resource('pisos', PisoController::class);
 Route::resource('oficinas', OficinaController::class);
-
 Route::resource('ubicaciones', UbicacionesController::class);
+
 Route::resource('tipos-bien', TipoBienController::class);
 
 Route::resource('tipos-ingreso', TipoIngresoController::class);
