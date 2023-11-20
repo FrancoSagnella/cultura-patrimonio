@@ -38,7 +38,7 @@
             </table>
           </div>
           <div class="container row">
-            {{ $proveedor->links() }}
+            {{ $proveedores->links() }}
           </div>
     </div>
 </div>

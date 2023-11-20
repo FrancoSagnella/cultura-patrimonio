@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Proveedor;
 use App\Models\Provincia;
+use Paginator\Paginator;
 
 
 class ProveedorController extends Controller
