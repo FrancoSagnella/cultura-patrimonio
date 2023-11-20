@@ -18,9 +18,9 @@ class ProveedorController extends Controller
     public function index()
     {
         //
-        $proveedores = Proveedor::select("proveedor.id", "proveedor.nombre_proveedor", "proveedor.descripcion_proveedor")->get();
+        $proveedores = Proveedor::select("proveedor.id", "proveedor.nombre_proveedor", "proveedor.descripcion_proveedor")->get()->paginate(15);
 
-        return $proveedores;
+        return view('proveedores.index')->with('proveedores', $proveedores);
     }
 
     /**

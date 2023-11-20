@@ -13,6 +13,7 @@ use App\Http\Controllers\TipoIngresoController;
 use App\Http\Controllers\TipoResponsableController;
 use App\Http\Controllers\UbicacionesController;
 use App\Http\Controllers\UnidadFuncionalController;
+use App\Http\Controllers\ProveedorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -44,6 +45,9 @@ Route::prefix('patrimonio')->group(function () {
     Route::get('/', [PatrimonioController::class, 'index'])->name('patrimonio.index');
     Route::get('/create', [PatrimonioController::class, 'create'])->name('patrimonio.create');
     Route::post('/', [PatrimonioController::class, 'store'])->name('patrimonio.store');
+});
+Route::prefix('proveedores')->group(function() {
+    Route::get('/',[ProveedorController::class,'index'])->name('proveedores.index');
 });
 
 //Rutas de Seccion Administracion
