@@ -25,11 +25,11 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach ($proveedores as $proveedores)
+                @foreach ($proveedores as $proveedor)
                 <tr>
-                  <td class="text-center">{{$proveedores->id}}</td>
-                  <td>{{$tipoBien->nombre_proveedor}}</td>
-                  <td>{{$tipoBien->descripcion_proveedor}}</td>
+                  <td class="text-center">{{$proveedor->id}}</td>
+                  <td>{{$proveedor->nombre_proveedor}}</td>
+                  <td>{{$proveedor->descripcion_proveedor}}</td>
                   {{-- <td class="text-center">{{$tipoBien->parent_id ? $tipoBien->parent_id : '-'   }}</td>
                   <td class="text-center">{{$tipoBien->codigo_presup}}</td> --}}
                 </tr>
@@ -38,7 +38,7 @@
             </table>
           </div>
           <div class="container row">
-            {{ $tiposBien->links() }}
+            {{ $proveedor->links() }}
           </div>
     </div>
 </div>
