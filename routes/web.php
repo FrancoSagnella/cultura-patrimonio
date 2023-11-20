@@ -49,5 +49,10 @@ Route::resource('pisos', PisoController::class);
 Route::resource('oficinas', OficinaController::class);
 
 Route::resource('ubicaciones', UbicacionesController::class);
-Route::resource('tipos-bien', TipoBienController::class);
+//Tipo bien routes
+Route::prefix('patrimonio')->group(function () {
+    Route::get('tipos-bien', [TipoBienController::class, 'index'])->name('tipos-bien.index');
+    Route::get('alta-tipos-bien', [TipoBienController::class, 'create'] )->name('tipos-bien.create');
+});
+
 Route::resource('tipos-ingreso', TipoIngresoController::class);
