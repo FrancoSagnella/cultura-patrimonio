@@ -83,3 +83,11 @@ const habilitarTipoIngreso = (id) => {
       });
 
 }
+const mostrarFormAltaProveedor = () => {
+
+    $("#modal-body").empty();
+    $.get('/proveedores/create', (data, status) => {
+        $("#modal-body").append(data);
+    });
+
+}

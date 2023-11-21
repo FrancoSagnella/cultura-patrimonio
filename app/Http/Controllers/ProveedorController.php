@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Proveedor;
 use App\Models\Provincia;
 use Paginator\Paginator;
-
+use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Validator;
+use stdClass;
 
 class ProveedorController extends Controller
 {
@@ -18,8 +20,9 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        //
-        $proveedores = Proveedor::select("proveedor.id", "proveedor.nombre_proveedor", "proveedor.descripcion_proveedor")->paginate(15);
+        
+        //$proveedores = Proveedor::select("proveedor.id", "proveedor.nombre_proveedor", "proveedor.descripcion_proveedor")->paginate(15);
+        $proveedores = Proveedor::select("*")->paginate(15);
 
         return view('proveedor.index')->with('proveedores', $proveedores);
     }
@@ -32,6 +35,8 @@ class ProveedorController extends Controller
     public function create()
     {
         //
+        $provincias = Provincia::all();
+        return view('proveedor.alta')->with('provincias', $provincias);
     }
 
     /**
@@ -42,7 +47,27 @@ class ProveedorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //creo response
+        $response = new stdClass();
+        $response->message = "ok";
+
+        //se validan inputs
+        $validator = Validator::make($request->all(), [
+            'nombre_proveedor' => 'required|max:255',
+        ]);
+
+        //en caso de error en validacion, seteo errors en el response y devuelvo
+        if($validator->fails()) {
+            $response->message = "error";
+            $response->errors = $validator->messages()->get("*");
+
+            return response()->json($response);
+        }
+    
+            //Si la validacion se pasa, hago el alta
+            Proveedor::create($request->all());
+    
+            return response()->json($response);
     }
 
     /**
