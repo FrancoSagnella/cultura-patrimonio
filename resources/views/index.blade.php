@@ -105,7 +105,7 @@
                     <a class="links-texto" href="{{ route('ubicaciones.index') }}">Ubicaciones</a><br>
                     <a class="links-texto" href="{{ route('direcciones.index') }}">Direcciones</a><br>
                     <a class="links-texto" href="">Dependencias</a><br>
-                    <a class="links-texto" href="">Proveedores</a><br>
+                    <a class="links-texto" href="{{ route('proveedores.index')}}">Proveedores</a><br>
                     <a class="links-texto" href="">Tipos de Baja</a><br>
                     <a class="links-texto" href="{{ route('tipos-ingreso.index') }}">Tipos de Ingreso</a><br>
                     <a class="links-texto" href="{{ route('tipos-bien.index') }}">Tipos de Bien</a><br>
