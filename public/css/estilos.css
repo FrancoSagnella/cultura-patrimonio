@@ -1,0 +1,76 @@
+:root {
+    --color-cultura-primary: #37BBED;
+    --color-cultura-secondary: #2897D4;
+    --color-cultura-tertiary: #F2F2F2;
+    --color-cultura-white: #FFFFFF;
+  }
+@media screen and (max-width: 767px) {
+/* Aquí van los estilos para dispositivos móviles */
+}
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+/* Aquí van los estilos para tablets */
+}
+@media screen and (min-width: 1025px) {
+/* Aquí van los estilos para notebooks y monitores de computadora */
+}
+.sidebar {
+    width: 6.5rem;  
+    margin-right: unset; 
+    position: fixed; 
+    left: 0; 
+    height:100%; 
+    background-color: var(--color-cultura-primary);
+}
+.btn:focus{
+    box-shadow: 0 0 0 0rem rgba(13,110,253,.25);
+}
+.btn-offcanvas-dismiss {
+    max-width:410px; 
+    width: 100%; 
+    position: fixed;
+}
+.btn-sidebar:hover{
+    background-color: var(--color-cultura-white);
+}
+.btn-sidebar:hover img {
+    content: url("/img/Ícono Cultura.png");
+}
+.offcanvas{
+    background-color: var(--color-cultura-primary);
+}
+.link-offcanvas{
+    color: var(--color-cultura-white);
+    text-decoration: none;
+}
+.link-offcanvas:hover{
+    color: var(--color-cultura-secondary);
+    background-color: var(--color-cultura-white);
+}
+
+/* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/
+/* Barrita scrolleable aesthetic */
+.contenedor::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.contenedor::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+.contenedor::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+} 
+
+.contenedor::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.contenedor::-webkit-scrollbar-thumb {
+    background-color: var(--color-cultura-secondary);
+    border-radius: 20px;
+    border: 2px solid var(--color-cultura-white);
+}
+
+.contenedor::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}

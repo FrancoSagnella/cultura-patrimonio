@@ -99,7 +99,7 @@ footer {
 
 /* aplica el margen de la pagina respecto al menu, si se agregan medias cuando se haga el responsive, se puede tocar solo esto */
 .contenedor-pagina{
-    margin-left: 217px;
+    margin-left: 6.5rem;
 }
 .secciones-footer{
     font-size: 0.9rem; 
