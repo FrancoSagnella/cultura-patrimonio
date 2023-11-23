@@ -8,7 +8,7 @@
     <div class="row justify-content-center mt-3">
         <div class="col-md-4 titulo-redondeado-celeste">
             <div class="row text-center">
-                <h1>Tipos de Ingreso</h1>
+                <h1>Tipos de Asignación</h1>
             </div>
         </div>
     </div>
@@ -19,36 +19,38 @@
                 <thead>
                   <tr>
                     <th scope="col">Id</th>
-                    <th scope="col">Ingreso</th>
+                    <th scope="col">Asignación</th>
+                    <th scope="col">Descripción</th>
                     <th scope="col">
-                        <button onclick="mostrarFormAlta('tipos-ingreso')" type="button" class="btn btn-success botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
-                            Nuevo Tipo de Ingreso
+                        <button onclick="mostrarFormAltaTipoAsignacion()" type="button" class="btn btn-success botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
+                            Nuevo Tipo de Asignación
                         </button>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($tiposIngreso as $ingreso)
-                        <tr>
-                            <td>{{ $ingreso->id }}</td>
-                            <td>{{ $ingreso->ingreso }}</td>
-                            <td>
-                                <button onclick="mostrarFormEditar('tipos-ingreso', {{ $ingreso->id }})" type="button" class="btn btn-primary botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
+                  @foreach ($tiposAsignacion as $asignacion)
+                      <tr>
+                        <th> {{ $asignacion->id }} </th>
+                        <td> {{ $asignacion->tipo_asignacion }} </td>
+                        <td> {{ $asignacion->descripcion }} </td>
+                        <td>
+                                <button onclick="mostrarFormEditarTipoAsignacion({{ $asignacion->id }})" type="button" class="btn btn-primary botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                                     Editar
                                 </button>
-                                @if(!$ingreso->habilitado)
-                                    <button onclick="habilitar('tipos-ingreso', {{ $ingreso->id }})" type="button" class="btn btn-success botones-redondos" >
+                                @if(!$asignacion->habilitado)
+                                    <button onclick="habilitarTipoAsignacion({{ $asignacion->id }})" type="button" class="btn btn-success botones-redondos" >
                                         Habilitar
                                     </button>
                                 @else
-                                    <button onclick="deshabilitar('tipos-ingreso', {{ $ingreso->id }})" type="button" class="btn btn-danger botones-redondos" >
+                                    <button onclick="deshabilitarTipoAsignacion({{ $asignacion->id }})" type="button" class="btn btn-danger botones-redondos" >
                                         Deshabilitar
                                     </button>
                                 @endif
                             </td>
-                        </tr>
-                    @endforeach
-                </tbody>
+                      </tr>
+                    </tbody>
+                  @endforeach
               </table>
         </div>
     </div>
@@ -58,7 +60,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="ModalLabel">Alta de Tipo de Ingreso</h5>
+          <h5 class="modal-title" id="ModalLabel">Alta de Tipo de Asignación</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" id="modal-body">
@@ -71,5 +73,5 @@
 
 @endsection
 @push('scripts')
-<script src="{{asset('js/utils.js')}}"></script>
+<script src="{{asset('js/tipo-asignacion/utils.js')}}"></script>
 @endpush

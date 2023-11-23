@@ -2,13 +2,19 @@
 
 use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\ComplejoController;
+use App\Http\Controllers\DependenciasController;
+use App\Http\Controllers\DireccionesController;
 use App\Http\Controllers\OficinaController;
 use App\Http\Controllers\PatrimonioController;
 use App\Http\Controllers\PisoController;
+use App\Http\Controllers\ResponsablesController;
 use App\Http\Controllers\TipoBienController;
 use App\Http\Controllers\TipoIngresoController;
+use App\Http\Controllers\TipoAsignacionController;
+use App\Http\Controllers\TipoResponsableController;
 use App\Http\Controllers\UbicacionesController;
 use App\Http\Controllers\UnidadFuncionalController;
+use App\Http\Controllers\ProveedorController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,24 +41,36 @@ Route::prefix('auth')->group(function () {
 
 });
 
-//Patrimonio routes
+//Rutas de Seccion Core
 Route::prefix('patrimonio')->group(function () {
     Route::get('/', [PatrimonioController::class, 'index'])->name('patrimonio.index');
     Route::get('/create', [PatrimonioController::class, 'create'])->name('patrimonio.create');
     Route::post('/', [PatrimonioController::class, 'store'])->name('patrimonio.store');
 });
+// Route::prefix('proveedores')->group(function() {
+//     Route::get('/',[ProveedorController::class,'index'])->name('proveedores.index');
+//     Route::get('/create',[ProveedorController::class,'create'])->name('proveedores.create');
+// });
+Route::resource('proveedores', ProveedorController::class);
 
 //Rutas de Seccion Administracion
+Route::resource('tipos-responsable', TipoResponsableController::class);
+Route::resource('responsables', ResponsablesController::class);
+
+Route::resource('dependencias', DependenciasController::class);
+
+Route::resource('direcciones', DireccionesController::class);
+
 Route::resource('complejos', ComplejoController::class);
 Route::resource('unidades-funcionales', UnidadFuncionalController::class);
 Route::resource('pisos', PisoController::class);
 Route::resource('oficinas', OficinaController::class);
-
 Route::resource('ubicaciones', UbicacionesController::class);
-//Tipo bien routes
-Route::prefix('patrimonio')->group(function () {
-    Route::get('tipos-bien', [TipoBienController::class, 'index'])->name('tipos-bien.index');
-    Route::get('alta-tipos-bien', [TipoBienController::class, 'create'] )->name('tipos-bien.create');
-});
+
+Route::resource('tipos-bien', TipoBienController::class);
 
 Route::resource('tipos-ingreso', TipoIngresoController::class);
+Route::get('tipos-ingreso/deshabilitar/{id}', [TipoIngresoController::class, 'disable'])->name('tipos-ingreso.disable');
+Route::get('tipos-ingreso/habilitar/{id}', [TipoIngresoController::class, 'enable'])->name('tipos-ingreso.enable');
+
+Route::resource('tipos-asignacion', TipoAsignacionController::class);
