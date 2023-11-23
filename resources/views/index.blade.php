@@ -49,7 +49,6 @@
                 {{-- Footer --}}
                 @include('footer')
             </div>
-
         </div>
 
     </body>
