@@ -9,5 +9,16 @@ class Direccion extends Model
 {
     use HasFactory;
 
-    protected $table = 'direcciones';
+    protected $table = 'dir';
+    protected $fillable = [
+        'prov_id',
+        'loc',
+        'cp',
+        'calle',
+        'nro',
+        'tel',
+        'upd',
+        'user',
+        'del'
+    ];
 }

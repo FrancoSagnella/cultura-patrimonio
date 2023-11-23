@@ -1,20 +1,21 @@
-const mostrarFormAltaTipoIngreso = () => {
+const mostrarFormAlta = (ruta) => {
 
     $("#modal-body").empty();
-    $.get('/tipos-ingreso/create', (data, status) => {
+    $.get('/'+ruta+'/create', (data, status) => {
         $("#modal-body").append(data);
     });
 
 }
 
-const enviarFormAltaTipoIngreso = () => {
+const enviarFormAlta = (ruta) => {
 
-    $.post('/tipos-ingreso', $("#formAlta").serialize())
+    $.post('/'+ruta, $("#formAlta").serialize())
         .done((data, status) => {
             if(data.errors){
                 console.log(data);
             }
             else{
+                console.log(data);
                 $('#Modal').modal('toggle');
                 //Esto es un parche xd, es para recargar la p[agina una vez hecha el alta, hay una libreria llamada livewire que deja hacerlo funcionar como sngular, podriamos investigarla
                 location.reload();
@@ -23,19 +24,19 @@ const enviarFormAltaTipoIngreso = () => {
 
 }
 
-const mostrarFormEditarTipoIngreso = (id) => {
+const mostrarFormEditar = (ruta, id) => {
 
     $("#modal-body").empty();
-    $.get('/tipos-ingreso/'+id+'/edit', (data, status) => {
+    $.get('/'+ruta+'/'+id+'/edit', (data, status) => {
         $("#modal-body").append(data);
     });
 
 }
 
-const enviarFormEditarTipoIngreso = (id) => {
+const enviarFormEditar = (ruta, id) => {
 
     $.ajax({
-        url: '/tipos-ingreso/'+id,
+        url: '/'+ruta+'/'+id,
         type: 'PUT',
         data: $("#formEditar").serialize(),
         success: (data)=>{
@@ -50,10 +51,10 @@ const enviarFormEditarTipoIngreso = (id) => {
       });
 }
 
-const deshabilitarTipoIngreso = (id) => {
+const deshabilitar = (ruta, id) => {
 
     $.ajax({
-        url: '/tipos-ingreso/deshabilitar/'+id,
+        url: '/'+ruta+'/deshabilitar/'+id,
         type: 'GET',
         success: (data)=>{
             if(data.errors){
@@ -67,10 +68,10 @@ const deshabilitarTipoIngreso = (id) => {
 
 }
 
-const habilitarTipoIngreso = (id) => {
+const habilitar = (ruta, id) => {
 
     $.ajax({
-        url: '/tipos-ingreso/habilitar/'+id,
+        url: '/'+ruta+'/habilitar/'+id,
         type: 'GET',
         success: (data)=>{
             if(data.errors){
@@ -81,13 +82,5 @@ const habilitarTipoIngreso = (id) => {
             }
         }
       });
-
-}
-const mostrarFormAltaProveedor = () => {
-
-    $("#modal-body").empty();
-    $.get('/proveedores/create', (data, status) => {
-        $("#modal-body").append(data);
-    });
 
 }

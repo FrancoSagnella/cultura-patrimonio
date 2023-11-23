@@ -8,7 +8,7 @@
     <div class="row justify-content-center mt-3">
         <div class="col-md-4 titulo-redondeado-celeste">
             <div class="row text-center">
-                <h1>Tipos de Ingreso</h1>
+                <h1>Direcciones</h1>
             </div>
         </div>
     </div>
@@ -18,30 +18,38 @@
             <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Ingreso</th>
+                    <th scope="col">Provincia</th>
+                    <th scope="col">Localidad</th>
+                    <th scope="col">Codigo Postal</th>
+                    <th scope="col">Calle</th>
+                    <th scope="col">Numero</th>
+                    <th scope="col">Telefono</th>
                     <th scope="col">
-                        <button onclick="mostrarFormAlta('tipos-ingreso')" type="button" class="btn btn-success botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
-                            Nuevo Tipo de Ingreso
+                        <button onclick="mostrarFormAlta('direcciones')" type="button" class="btn btn-success botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
+                            Nueva Direccion
                         </button>
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                    @foreach ($tiposIngreso as $ingreso)
+                    @foreach ($direcciones as $direccion)
                         <tr>
-                            <td>{{ $ingreso->id }}</td>
-                            <td>{{ $ingreso->ingreso }}</td>
+                            <td>{{ $direccion->nombre_provincia }}</td>
+                            <td>{{ $direccion->loc }}</td>
+                            <td>{{ $direccion->cp }}</td>
+                            <td>{{ $direccion->calle }}</td>
+                            <td>{{ $direccion->nro }}</td>
+                            <td>{{ $direccion->tel }}</td>
                             <td>
-                                <button onclick="mostrarFormEditar('tipos-ingreso', {{ $ingreso->id }})" type="button" class="btn btn-primary botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
+                                <button onclick="mostrarFormEditar('direcciones', {{ $direccion->id }})" type="button" class="btn btn-primary botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                                     Editar
                                 </button>
-                                @if(!$ingreso->habilitado)
-                                    <button onclick="habilitar('tipos-ingreso', {{ $ingreso->id }})" type="button" class="btn btn-success botones-redondos" >
+                                @if(!$direccion->del)
+                                    <button onclick="habilitar('direcciones', {{ $direccion->id }})" type="button" class="btn btn-success botones-redondos" >
                                         Habilitar
                                     </button>
                                 @else
-                                    <button onclick="deshabilitar('tipos-ingreso', {{ $ingreso->id }})" type="button" class="btn btn-danger botones-redondos" >
+                                    <button onclick="deshabilitar('direcciones', {{ $direccion->id }})" type="button" class="btn btn-danger botones-redondos" >
                                         Deshabilitar
                                     </button>
                                 @endif
@@ -58,7 +66,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="ModalLabel">Alta de Tipo de Ingreso</h5>
+          <h5 class="modal-title" id="ModalLabel">Alta de Direcciones</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body" id="modal-body">

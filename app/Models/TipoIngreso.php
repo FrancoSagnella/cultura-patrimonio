@@ -10,5 +10,7 @@ class TipoIngreso extends Model
     use HasFactory;
 
     protected $table = 'tipo_ingreso';
-
+    protected $fillable = [
+        'ingreso'
+    ];
 }

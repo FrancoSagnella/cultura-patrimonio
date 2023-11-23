@@ -1,7 +1,7 @@
 const mostrarFormAltaTipoIngreso = () => {
 
     $("#modal-body").empty();
-    $.get('/tipos-ingreso/create', (data, status) => {
+    $.get('/direcciones/create', (data, status) => {
         $("#modal-body").append(data);
     });
 
@@ -9,7 +9,7 @@ const mostrarFormAltaTipoIngreso = () => {
 
 const enviarFormAltaTipoIngreso = () => {
 
-    $.post('/tipos-ingreso', $("#formAlta").serialize())
+    $.post('/direcciones', $("#formAlta").serialize())
         .done((data, status) => {
             if(data.errors){
                 console.log(data);
@@ -26,7 +26,7 @@ const enviarFormAltaTipoIngreso = () => {
 const mostrarFormEditarTipoIngreso = (id) => {
 
     $("#modal-body").empty();
-    $.get('/tipos-ingreso/'+id+'/edit', (data, status) => {
+    $.get('/direcciones/'+id+'/edit', (data, status) => {
         $("#modal-body").append(data);
     });
 
@@ -35,7 +35,7 @@ const mostrarFormEditarTipoIngreso = (id) => {
 const enviarFormEditarTipoIngreso = (id) => {
 
     $.ajax({
-        url: '/tipos-ingreso/'+id,
+        url: '/direcciones/'+id,
         type: 'PUT',
         data: $("#formEditar").serialize(),
         success: (data)=>{
@@ -53,7 +53,7 @@ const enviarFormEditarTipoIngreso = (id) => {
 const deshabilitarTipoIngreso = (id) => {
 
     $.ajax({
-        url: '/tipos-ingreso/deshabilitar/'+id,
+        url: '/direcciones/deshabilitar/'+id,
         type: 'GET',
         success: (data)=>{
             if(data.errors){
@@ -70,7 +70,7 @@ const deshabilitarTipoIngreso = (id) => {
 const habilitarTipoIngreso = (id) => {
 
     $.ajax({
-        url: '/tipos-ingreso/habilitar/'+id,
+        url: '/direcciones/habilitar/'+id,
         type: 'GET',
         success: (data)=>{
             if(data.errors){
@@ -81,13 +81,5 @@ const habilitarTipoIngreso = (id) => {
             }
         }
       });
-
-}
-const mostrarFormAltaProveedor = () => {
-
-    $("#modal-body").empty();
-    $.get('/proveedores/create', (data, status) => {
-        $("#modal-body").append(data);
-    });
 
 }
