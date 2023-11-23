@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\TipoBien;
 use App\Models\TipoBienAmortizacion;
-use Paginator\Paginator;
 
-class TipoBienController extends Controller
+class TipoBienAmortizacionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +15,7 @@ class TipoBienController extends Controller
      */
     public function index()
     {
-        $tiposBien = TipoBien::paginate(20);
-        return view('tipo-bien.index')->with('tiposBien', $tiposBien);
+        //
     }
 
     /**
@@ -27,12 +25,13 @@ class TipoBienController extends Controller
      */
     public function create()
     {
-        $tiposBienAmortizacion = TipoBienAmortizacion::all();
-
-        return view('tipo-bien.altaTipoBien')->with('tiposBienAmortizacion', $tiposBienAmortizacion);
-
+        //
     }
 
+    public function read()
+    {
+        return TipoBienAmortizacion::all();
+    }
     /**
      * Store a newly created resource in storage.
      *

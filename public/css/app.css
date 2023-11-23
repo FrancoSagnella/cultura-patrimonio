@@ -143,3 +143,11 @@ footer {
 .botones-redondos{
     border-radius: 1rem;
 }
+
+/*estilos para achicar botones paginados */
+.w-5{
+width: 20px;
+}
+.h-5 {
+height: 20px;
+}
