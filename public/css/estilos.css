@@ -68,7 +68,7 @@
 .contenedor::-webkit-scrollbar-thumb {
     background-color: var(--color-cultura-secondary);
     border-radius: 20px;
-    border: 2px solid var(--color-cultura-white);
+    border: 2px solid var(--color-cultura-secondary);
 }
 
 .contenedor::-webkit-scrollbar-track {
