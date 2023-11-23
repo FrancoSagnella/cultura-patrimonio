@@ -32,17 +32,6 @@
         </div>
         {{-- Localidad input --}}
 
-        {{-- cp input --}}
-        <div class="row">
-            <div class="col-2 mt-3">
-                Codigo Postal
-            </div>
-            <div class="col-8 mt-3">
-                <input class="form-control" type="text" name="cp" id="cp" value="{{ $direccion->cp }}">
-            </div>
-        </div>
-        {{-- cp input --}}
-
         {{-- calle input --}}
         <div class="row">
             <div class="col-2 mt-3">
@@ -64,6 +53,17 @@
             </div>
         </div>
         {{-- numero input --}}
+
+        {{-- cp input --}}
+        <div class="row">
+            <div class="col-2 mt-3">
+                Codigo Postal
+            </div>
+            <div class="col-8 mt-3">
+                <input class="form-control" type="text" name="cp" id="cp" value="{{ $direccion->cp }}">
+            </div>
+        </div>
+        {{-- cp input --}}
 
         {{-- telefono input --}}
         <div class="row">
