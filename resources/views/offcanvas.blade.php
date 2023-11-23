@@ -75,7 +75,7 @@
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="">Tipos de Baja</a>
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('tipos-ingreso.index') }}">Tipos de Ingreso</a>
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('tipos-bien.index') }}">Tipos de Bien</a>
-                <a class="links-texto link-offcanvas d-flex justify-content-between" href="">Tipos de Asignacion</a>
+                <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('tipos-asignacion.index') }}">Tipos de Asignacion</a>
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="">Tipos de Responsable</a>
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="">Tipos de Remito</a>
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="">Universos</a>
