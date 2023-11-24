@@ -67,14 +67,8 @@ class DireccionesController extends Controller
             return response()->json($response);
         }
 
-        try{
-
-            //Si la validacion se pasa, hago el alta
-            Direccion::create($request->except('_token'));
-        }
-        catch(Exception $e){
-            return response()->json($e->getMessage());
-        }
+        //Si la validacion se pasa, hago el alta
+        Direccion::create($request->except('_token'));
 
         return response()->json($response);
     }
