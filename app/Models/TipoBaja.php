@@ -11,4 +11,6 @@ class TipoBaja extends Model
 
     //De momento por lo menos uso esta
     protected $table = 'tipo_baja';
+    protected $fillable = ['tipo_baja'];
+
 }
