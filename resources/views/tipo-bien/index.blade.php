@@ -13,15 +13,15 @@
     </div>
 
     <div class="row mt-3 mb-3">
-        <div class="col">
-            <table class="table table-striped">
+        <div class="panel-body contenedor contenedor-tablas mb-4">
+            <table class="table-responsive cultura-table">
               <thead>
                 <tr>
-                  <th scope="col">id</th>
-                  <th scope="col">parent_id</th>
-                  <th scope="col">codigo_presup</th>
-                  <th scope="col">tipo_bien</th>
-                  <th scope="col">descripcion_bien</th>
+                  <th scope="col"><label class="d-flex justify-content-center">id</label></th>
+                  <th scope="col"><label class="d-flex justify-content-center">parent_id</label></th>
+                  <th scope="col"><label class="d-flex justify-content-center">codigo_presup</label></th>
+                  <th scope="col"><label class="d-flex justify-content-center">tipo_bien</label></th>
+                  <th scope="col"><label class="d-flex justify-content-center">descripcion_bien</label></th>
                 </tr>
               </thead>
               <tbody>

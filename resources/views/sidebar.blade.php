@@ -5,32 +5,32 @@
               <img class="me-2" src="{{ asset('/img/Logo Ministerio Cultura.png') }}" alt="Panel">
         </li>
         <li class="">
-            <a href="{{ url('/') }}" class="nav-link py-3 btn-sidebar" aria-current="page" title="Panel" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
-              <img class="me-2" src="{{ asset('/img/Ícono Cultura Blanco.png') }}" alt="Panel">
+            <a href="{{ url('/') }}" class="nav-link py-3 btn-sidebar btn-sidebar-cultura" aria-current="page" title="Panel" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+              <img class="me-2" src="{{ asset('/img/Ícono Cultura.png') }}" alt="Panel">
             </a>
         </li>
         <li class="">
-            <a href="{{ url('/') }}" class="nav-link py-3 btn-sidebar" aria-current="page" title="Panel" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+            <a href="{{ url('/') }}" class="nav-link py-3 btn-sidebar btn-sidebar-institucion" aria-current="page" title="Panel" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
               <img class="me-2" src="{{ asset('/img/Ícono Institución.png') }}" alt="Panel">
             </a>
         </li>
        <li class="">
-        <a href="{{ url('/') }}" class="nav-link py-3 btn-sidebar" aria-current="page" title="Panel" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+        <a href="{{ url('/') }}" class="nav-link py-3 btn-sidebar btn-sidebar-escritura" aria-current="page" title="Panel" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
           <img class="me-2" src="{{ asset('/img/Ícono Escritura.png') }}" alt="Panel">
         </a>
       </li>
       <li class="">
-        <a href="{{ url('/') }}" class="nav-link py-3 btn-sidebar" aria-current="page" title="Panel" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+        <a href="{{ url('/') }}" class="nav-link py-3 btn-sidebar btn-sidebar-calendario" aria-current="page" title="Panel" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
           <img class="me-2" src="{{ asset('/img/Ícono Caja.png') }}" alt="Panel">
         </a>
       </li>
       <li class="">
-        <a href="{{ url('/') }}" class="nav-link py-3 btn-sidebar" aria-current="page" title="Panel" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+        <a href="{{ url('/') }}" class="nav-link py-3 btn-sidebar btn-sidebar-usuarios" aria-current="page" title="Panel" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
           <img class="me-2" src="{{ asset('/img/Ícono Usuarios.png') }}" alt="Panel">
         </a>
       </li>
       <li class="">
-        <a href="{{ url('/') }}" class="nav-link py-3 btn-sidebar" aria-current="page" title="Panel" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+        <a href="{{ url('/') }}" class="nav-link py-3 btn-sidebar btn-sidebar-calendario" aria-current="page" title="Panel" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
           <img class="me-2" src="{{ asset('/img/Ícono Calendario.png') }}" alt="Panel">
         </a>
       </li>

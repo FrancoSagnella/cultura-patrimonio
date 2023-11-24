@@ -21,6 +21,7 @@
     height:100%; 
     background-color: var(--color-cultura-primary);
 }
+/* botones estilos pisados de boostrap y propios */
 .btn:focus{
     box-shadow: 0 0 0 0rem rgba(13,110,253,.25);
 }
@@ -32,9 +33,53 @@
 .btn-sidebar:hover{
     background-color: var(--color-cultura-white);
 }
-.btn-sidebar:hover img {
-    content: url("/img/Ícono Cultura.png");
+/* .btn-sidebar-cultura:hover {
+background-color: var(--color-cultura-white);
 }
+.btn-sidebar-institucion:hover {
+background-color: var(--color-cultura-white);
+}
+.btn-sidebar-escritura:hover {
+background-color: var(--color-cultura-white);
+}
+.btn-sidebar-usuarios:hover {
+background-color: var(--color-cultura-white);
+}
+.btn-sidebar-calendario:hover {
+background-color: var(--color-cultura-white);
+}
+.btn-sidebar-caja:hover {
+background-color: var(--color-cultura-white);
+} */
+.btn-sidebar-cultura:hover img {
+    content: url("/img/Ícono Cultura Celeste.png");
+}
+.btn-sidebar-institucion:hover img {
+  content: url("/img/Ícono Institución Celeste.png");
+}
+.btn-sidebar-escritura:hover img {
+  content: url("/img/Ícono Escritura Celeste.png");
+}
+.btn-sidebar-usuarios:hover img {
+  content: url("/img/Ícono Usuarios Celeste.png");
+}
+.btn-sidebar-calendario:hover img {
+  content: url("/img/Ícono Calendario Celeste.png");
+}
+.btn-sidebar-caja:hover img {
+  /* no me pasaron la imagen todavia */
+  content: url("/img/Ícono Caja Celeste.png");
+}
+
+.form-control {
+  border-radius: 10px;
+}
+.form-select {
+  border-radius: 10px;
+  background-image: url("/img/Flecha abrir Tipo ingreso.png");
+
+}
+
 .offcanvas{
     background-color: var(--color-cultura-primary);
 }
@@ -74,3 +119,52 @@
 .contenedor::-webkit-scrollbar-track {
     border-radius: 10px;  
 }
+/* estilos para tablas */
+.contenedor-tablas{
+    max-height: 375px; 
+    overflow: auto;
+}
+/* new tables */
+  .cultura-table {
+    border-collapse: separate;
+    border-spacing: 0 5px;
+    font-size: 14px;
+  }
+  
+  .cultura-table thead {
+    position: sticky;
+    border-style: unset !important;
+    top: 0;
+    z-index: 1;
+    background-color: var(--color-cultura-tertiary);
+  }
+  .cultura-table th {
+    padding: 8px;
+  }
+  .cultura-table td{
+    padding: 8px;
+  }
+  .cultura-table tr {
+    box-shadow: 0px 2px 2px 1px rgba(195, 195, 195, 0.25);
+    -webkit-box-shadow: 0px 2px 2px 1px rgba(195, 195, 195, 0.25);
+    -moz-box-shadow: 0px 2px 2px 1px rgba(195, 195, 195, 0.25);
+    border-radius: 25px !important;
+  }
+  
+  .cultura-table td:first-child,
+  .cultura-table th:first-child {
+    border-radius: 10px 0 0 10px;
+  }
+  
+  .cultura-table td:last-child,
+  .cultura-table th:last-child {
+    border-radius: 0 10px 10px 0;
+  }
+  
+  .cultura-table .table-header {
+    font-weight: 700;
+  }
+  
+  .cultura-table .table-header small {
+    font-weight: 500;
+  }
