@@ -73,7 +73,7 @@
             <div class="">
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('ubicaciones.index') }}">Ubicaciones</a>
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('direcciones.index') }}">Direcciones</a>
-                <a class="links-texto link-offcanvas d-flex justify-content-between" href="">Tipos de Baja</a>
+                <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('tipos-baja.index') }}">Tipos de Baja</a>
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('tipos-ingreso.index') }}">Tipos de Ingreso</a>
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('tipos-asignacion.index') }}">Tipos de Asignacion</a>
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('tipos-responsable.index') }}">Tipos de Responsable</a>
