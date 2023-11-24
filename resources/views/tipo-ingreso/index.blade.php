@@ -14,8 +14,8 @@
     </div>
 
     <div class="row mt-3 mb-3">
-        <div class="col">
-            <table class="table table-striped">
+        <div class="panel-body contenedor contenedor-tablas  d-flex justify-content-center mb-4">
+            <table class="table-responsive cultura-table">
                 <thead>
                   <tr>
                     <th scope="col">Id</th>

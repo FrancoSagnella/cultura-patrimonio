@@ -11,4 +11,7 @@ class Dependencia extends Model
 
     //De momento por lo menos uso esta
     protected $table = 'dependencia';
+    protected $fillable = [
+        'id'];
+
 }

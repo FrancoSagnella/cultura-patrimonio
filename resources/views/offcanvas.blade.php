@@ -14,7 +14,7 @@
   <div class="offcanvas-body contenedor p-0">
         <div class="mt-4 ms-1 ps-4 p-3">
             <a class="link-offcanvas" data-bs-toggle="collapse" href="#collapsePatrimonio" role="button" aria-expanded="false" aria-controls="collapseExample">
-              <h5 class="mb-0"><img class="me-2" src="{{ asset('/img/Ícono Cultura Blanco.png') }}" alt="Panel">Patrimonio</h5>
+              <h5 class="mb-0"><img class="me-2" src="{{ asset('/img/Ícono Cultura.png') }}" alt="Panel">Patrimonio</h5>
             </a>
         </div>
         <div class="collapse" id="collapsePatrimonio">
@@ -41,24 +41,27 @@
         </div>
         <div class="collapse" id="collapseDependencia">
             <div class="">
+                <a class="links-texto link-offcanvas d-flex justify-content-between" href="">Dependencias</a>
             </div>
         </div>
         <div class=" ms-1 ps-4 p-3">
-            <a class="link-offcanvas" data-bs-toggle="collapse" href="#collapseAdministracion" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <a class="link-offcanvas" data-bs-toggle="collapse" href="#collapseTipoBien" role="button" aria-expanded="false" aria-controls="collapseExample">
                 <h5 class="mb-0"><img class="me-2" src="{{ asset('/img/Ícono Escritura.png') }}" alt="Panel"> Tipo de Bien</h5>
             </a>
         </div>
-        <div class="collapse" id="collapseAdministracion">
+        <div class="collapse" id="collapseTipoBien">
             <div class="">
+                <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('tipos-bien.index') }}">Tipos de Bien</a>
             </div>
         </div>
         <div class=" ms-1 ps-4 p-3">
-            <a class="link-offcanvas" data-bs-toggle="collapse" href="#collapseAdministracion" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <a class="link-offcanvas" data-bs-toggle="collapse" href="#collapseProveedor" role="button" aria-expanded="false" aria-controls="collapseExample">
                 <h5 class="mb-0"><img class="me-2" src="{{ asset('/img/Ícono Caja.png') }}" alt="Panel"> Proveedor</h5>
             </a>
         </div>
-        <div class="collapse" id="collapseAdministracion">
+        <div class="collapse" id="collapseProveedor">
             <div class="">
+                <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('proveedores.index')}}">Proveedores</a>
             </div>
         </div>
         <div class=" ms-1 ps-4 p-3">
@@ -70,23 +73,21 @@
             <div class="">
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('ubicaciones.index') }}">Ubicaciones</a>
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('direcciones.index') }}">Direcciones</a>
-                <a class="links-texto link-offcanvas d-flex justify-content-between" href="">Dependencias</a>
-                <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('proveedores.index')}}">Proveedores</a>
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="">Tipos de Baja</a>
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('tipos-ingreso.index') }}">Tipos de Ingreso</a>
-                <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('tipos-bien.index') }}">Tipos de Bien</a>
-                <a class="links-texto link-offcanvas d-flex justify-content-between" href="">Tipos de Asignacion</a>
-                <a class="links-texto link-offcanvas d-flex justify-content-between" href="">Tipos de Responsable</a>
+                <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('tipos-asignacion.index') }}">Tipos de Asignacion</a>
+                <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('tipos-responsable.index') }}">Tipos de Responsable</a>
+                <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('responsables.index') }}">Responsables</a>
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="">Tipos de Remito</a>
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="">Universos</a>
             </div>
         </div>
         <div class=" ms-1 ps-4 p-3">
-            <a class="link-offcanvas" data-bs-toggle="collapse" href="#collapseAdministracion" role="button" aria-expanded="false" aria-controls="collapseExample">
+            <a class="link-offcanvas" data-bs-toggle="collapse" href="#collapseItems" role="button" aria-expanded="false" aria-controls="collapseExample">
                 <h5 class="mb-0"><img class="me-2" src="{{ asset('/img/Ícono Calendario.png') }}" alt="Panel"> Ìtems</h5>
             </a>
         </div>
-        <div class="collapse" id="collapseAdministracion">
+        <div class="collapse" id="collapseItems">
             <div class="">
             </div>
         </div>
