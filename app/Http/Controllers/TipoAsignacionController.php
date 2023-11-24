@@ -59,7 +59,7 @@ class TipoAsignacionController extends Controller
         }
 
             
-            TipoIngreso::create($request->except('_token'));
+            TipoAsignacion::create($request->except('_token'));
         } catch(Exception $e){
             
             return response()->json($response);
