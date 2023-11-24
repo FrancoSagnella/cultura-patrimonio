@@ -20,7 +20,7 @@
       </div>
   </div>
   <div class="row mt-3 mb-3">
-    <div class="panel-body contenedor contenedor-tablas mb-4">
+    <div class="panel-body contenedor contenedor-tablas d-flex justify-content-center  mb-4">
       <table class="table-responsive cultura-table">
         <thead>
           <tr>
