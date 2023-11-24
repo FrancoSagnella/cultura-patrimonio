@@ -22,7 +22,7 @@
                     <th scope="col">Asignación</th>
                     <th scope="col">Descripción</th>
                     <th scope="col">
-                        <button onclick="mostrarFormAltaTipoAsignacion()" type="button" class="btn btn-success botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
+                        <button onclick="mostrarFormAlta('tipos-asignacion')" type="button" class="btn btn-success botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                             Nuevo Tipo de Asignación
                         </button>
                     </th>
@@ -49,8 +49,8 @@
                                 @endif
                             </td>
                       </tr>
-                    </tbody>
                   @endforeach
+                  </tbody>
               </table>
         </div>
     </div>
@@ -73,5 +73,5 @@
 
 @endsection
 @push('scripts')
-<script src="{{asset('js/tipo-asignacion/utils.js')}}"></script>
+<script src="{{asset('js/utils.js')}}"></script>
 @endpush

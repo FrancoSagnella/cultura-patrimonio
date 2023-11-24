@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Models\TipoAsignacion;
-
+use Exception;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use stdClass;
 
 class TipoAsignacionController extends Controller
 {
@@ -36,7 +39,35 @@ class TipoAsignacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //creo response
+        $response = new stdClass();
+
+        
+        try{
+        $response->message = "ok";
+
+        //se validan inputs
+        $validator = Validator::make($request->all(), [
+            'tipo_asignacion' => 'required|max:252',
+            'descripcion' => 'required|max:500'
+        ]);
+
+        if($validator->fails()) {
+            $response->message = "error";
+            $response->errors = $validator->messages()->get("*");
+            return response()->json($response);
+        }
+
+            
+            TipoIngreso::create($request->except('_token'));
+        } catch(Exception $e){
+            
+            return response()->json($response);
+
+        }
+        
+
+        
     }
 
     /**

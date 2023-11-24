@@ -9,5 +9,8 @@ class TipoAsignacion extends Model
 {
     use HasFactory;
     protected $table = 'tipo_asignacion';
-
+    protected $fillable = [
+        'tipo_asignacion',
+        'descripcion'
+    ];
 }

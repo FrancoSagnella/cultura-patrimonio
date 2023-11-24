@@ -8,7 +8,6 @@ const mostrarFormAltaTipoIngreso = () => {
 }
 
 const enviarFormAltaTipoIngreso = () => {
-
     $.post('/tipos-ingreso', $("#formAlta").serialize())
         .done((data, status) => {
             if(data.errors){
