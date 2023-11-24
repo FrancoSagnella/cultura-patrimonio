@@ -9,6 +9,7 @@ use App\Http\Controllers\PatrimonioController;
 use App\Http\Controllers\PisoController;
 use App\Http\Controllers\ResponsablesController;
 use App\Http\Controllers\TipoBienController;
+use App\Http\Controllers\TipoBajaController;
 use App\Http\Controllers\TipoIngresoController;
 use App\Http\Controllers\TipoAsignacionController;
 use App\Http\Controllers\TipoResponsableController;
@@ -54,6 +55,7 @@ Route::prefix('patrimonio')->group(function () {
 Route::resource('proveedores', ProveedorController::class);
 
 //Rutas de Seccion Administracion
+Route::resource('tipos-baja', TipoBajaController::class);
 Route::resource('tipos-responsable', TipoResponsableController::class);
 Route::resource('responsables', ResponsablesController::class);
 
