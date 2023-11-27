@@ -9,7 +9,7 @@ const mostrarFormAlta = (ruta) => {
 
 const enviarFormAlta = (ruta) => {
 
-    console.log($("#formAlta").serialize());
+
 
 
     $.post('/'+ruta, $("#formAlta").serialize())

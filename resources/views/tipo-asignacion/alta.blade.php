@@ -20,6 +20,8 @@
         </div>
         {{-- Nombre Ingreso input --}}
 
+        <input type="hidden" id="habilitado" name="habilitado" value="1">
+
         <div class="row mt-4">
             <div class="col-6 text-end">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>

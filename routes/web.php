@@ -74,3 +74,5 @@ Route::get('tipos-ingreso/deshabilitar/{id}', [TipoIngresoController::class, 'di
 Route::get('tipos-ingreso/habilitar/{id}', [TipoIngresoController::class, 'enable'])->name('tipos-ingreso.enable');
 
 Route::resource('tipos-asignacion', TipoAsignacionController::class);
+Route::get('tipos-asignacion/deshabilitar/{id}', [TipoAsignacionController::class, 'disable'])->name('tipos-asignacion.disable');
+Route::get('tipos-asignacion/habilitar/{id}', [TipoAsignacionController::class, 'enable'])->name('tipos-asignacion.enable');

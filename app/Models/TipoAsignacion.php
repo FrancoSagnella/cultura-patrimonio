@@ -11,6 +11,7 @@ class TipoAsignacion extends Model
     protected $table = 'tipo_asignacion';
     protected $fillable = [
         'tipo_asignacion',
-        'descripcion'
+        'descripcion',
+        'habilitado'
     ];
 }
