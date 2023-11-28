@@ -12,6 +12,7 @@ use App\Http\Controllers\TipoBienController;
 use App\Http\Controllers\TipoBajaController;
 use App\Http\Controllers\TipoIngresoController;
 use App\Http\Controllers\TipoAsignacionController;
+use App\Http\Controllers\TipoEstadoController;
 use App\Http\Controllers\TipoResponsableController;
 use App\Http\Controllers\UbicacionesController;
 use App\Http\Controllers\UnidadFuncionalController;
@@ -76,3 +77,9 @@ Route::get('tipos-ingreso/deshabilitar/{id}', [TipoIngresoController::class, 'di
 Route::get('tipos-ingreso/habilitar/{id}', [TipoIngresoController::class, 'enable'])->name('tipos-ingreso.enable');
 
 Route::resource('tipos-asignacion', TipoAsignacionController::class);
+
+
+Route::resource('tipos-estado', TipoEstadoController::class);
+Route::get('tipos-estado/deshabilitar/{id}', [TipoEstadoController::class, 'disable'])->name('tipos-estado.disable');
+Route::get('tipos-estado/habilitar/{id}', [TipoEstadoController::class, 'enable'])->name('tipos-estado.enable');
+

@@ -79,7 +79,7 @@
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('tipos-responsable.index') }}">Tipos de Responsable</a>
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('responsables.index') }}">Responsables</a>
                 <a class="links-texto link-offcanvas d-flex justify-content-between" href="">Tipos de Remito</a>
-                <a class="links-texto link-offcanvas d-flex justify-content-between" href="">Universos</a>
+                <a class="links-texto link-offcanvas d-flex justify-content-between" href="{{ route('tipos-estado.index') }}">Tipos de Estado</a>
             </div>
         </div>
         <div class=" ms-1 ps-4 p-3">
