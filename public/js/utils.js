@@ -11,7 +11,6 @@ const enviarFormAlta = (ruta) => {
 
 
 
-
     $.post('/'+ruta, $("#formAlta").serialize())
         .done((data, status) => {
             if(data.errors){
@@ -21,6 +20,7 @@ const enviarFormAlta = (ruta) => {
                 console.log(data);
                 $('#Modal').modal('toggle');
                 //Esto es un parche xd, es para recargar la p[agina una vez hecha el alta, hay una libreria llamada livewire que deja hacerlo funcionar como sngular, podriamos investigarla
+                location.reload();
             }
         });
 
