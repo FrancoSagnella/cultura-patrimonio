@@ -14,15 +14,15 @@
     </div>
 
     <div class="row mt-3 mb-3">
-        <div class="col">
-            <table class="table table-striped">
+        <div class="panel-body contenedor contenedor-tablas  d-flex justify-content-center mb-4">
+            <table class="table-responsive cultura-table">
                 <thead>
                   <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Asignación</th>
                     <th scope="col">Descripción</th>
                     <th scope="col">
-                        <button onclick="mostrarFormAltaTipoAsignacion()" type="button" class="btn btn-success botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
+                        <button onclick="mostrarFormAlta('tipos-asignacion')" type="button" class="btn btn-success botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                             Nuevo Tipo de Asignación
                         </button>
                     </th>
@@ -35,22 +35,22 @@
                         <td> {{ $asignacion->tipo_asignacion }} </td>
                         <td> {{ $asignacion->descripcion }} </td>
                         <td>
-                                <button onclick="mostrarFormEditarTipoAsignacion({{ $asignacion->id }})" type="button" class="btn btn-primary botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
+                                <button onclick="mostrarFormEditar('tipos-asignacion', {{ $asignacion->id }})" type="button" class="btn btn-primary botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                                     Editar
                                 </button>
                                 @if(!$asignacion->habilitado)
-                                    <button onclick="habilitarTipoAsignacion({{ $asignacion->id }})" type="button" class="btn btn-success botones-redondos" >
+                                    <button onclick="habilitar('tipos-asignacion', {{ $asignacion->id }})" type="button" class="btn btn-success botones-redondos" >
                                         Habilitar
                                     </button>
                                 @else
-                                    <button onclick="deshabilitarTipoAsignacion({{ $asignacion->id }})" type="button" class="btn btn-danger botones-redondos" >
+                                    <button onclick="deshabilitar('tipos-asignacion', {{ $asignacion->id }})" type="button" class="btn btn-danger botones-redondos" >
                                         Deshabilitar
                                     </button>
                                 @endif
                             </td>
                       </tr>
-                    </tbody>
                   @endforeach
+                  </tbody>
               </table>
         </div>
     </div>
@@ -73,5 +73,5 @@
 
 @endsection
 @push('scripts')
-<script src="{{asset('js/tipo-asignacion/utils.js')}}"></script>
+<script src="{{asset('js/utils.js')}}"></script>
 @endpush
