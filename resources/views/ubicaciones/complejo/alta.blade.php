@@ -1,21 +1,5 @@
-<form action="/" method="post" enctype="multipart/form-data" id="formAlta">
-    @csrf
-    <div class="container">
 
-        {{-- Tipo ubicacion Input --}}
-        <div class="row">
-            <div class="col-2 mt-1">
-                Tipo de ubicación
-            </div>
-            <div class="col-8">
-                <select class="form-control" name="tipoUbicacion" id="tipoUbicacion">
-                    <option value="" selected>Seleccione</option>
-                    <option value="complejo">Complejo</option>
-                    <option value="edificio">Edificio</option>
-                </select>
-            </div>
-        </div>
-        {{-- Tipo ubicacion Input --}}
+    <div class="container">
 
         {{-- Nombre complejo / edificio input --}}
         <div class="row">
@@ -27,6 +11,20 @@
             </div>
         </div>
         {{-- Nombre complejo / edificio input --}}
+
+        {{-- Dependencia input --}}
+        <div class="row">
+            <div class="col-2 mt-3">
+                Dependendiente de
+            </div>
+            <div class="col-8 mt-3">
+                <select class="form-control" name="dependencia" id="dependencia" onchange="mostrarResponsable()">
+                    <option value="" selected>Seleccione</option>
+                    <option value="1">Ministerio de cultura de la nacion</option>
+                </select>
+            </div>
+        </div>
+        {{-- Dependencia input --}}
 
         {{-- Direccion Input --}}
         <div class="row">
@@ -49,93 +47,11 @@
         {{-- Direccion Input --}}
 
 
-        {{-- Seccion para el alta de una nueva direccion --}}
-        <div class="row" id="seccionDireccion" style="display: none">
-            <div class="col">
+        <div class="row" id="seccionDireccion">
 
-                {{-- Calle input --}}
-                <div class="row">
-                    <div class="col-2 mt-3">
-                        Calle
-                    </div>
-                    <div class="col-8 mt-3">
-                        <input class="form-control" type="text" name="calle" id="calle">
-                    </div>
-                </div>
-
-                {{-- Numero input --}}
-                <div class="row">
-                    <div class="col-2 mt-3">
-                        Numero
-                    </div>
-                    <div class="col-8 mt-3">
-                        <input class="form-control" type="text" name="numero" id="numero">
-                    </div>
-                </div>
-
-                {{-- Codigo postal input --}}
-                <div class="row">
-                    <div class="col-2 mt-3">
-                        Codigo Postal
-                    </div>
-                    <div class="col-8 mt-3">
-                        <input class="form-control" type="text" name="codPostal" id="codPostal">
-                    </div>
-                </div>
-
-                {{-- Localidad input --}}
-                <div class="row">
-                    <div class="col-2 mt-3">
-                        Localidad
-                    </div>
-                    <div class="col-8 mt-3">
-                        <input class="form-control" type="text" name="localidad" id="localidad">
-                    </div>
-                </div>
-
-                {{-- Telefono --}}
-                <div class="row">
-                    <div class="col-2 mt-3">
-                        Telefono
-                    </div>
-                    <div class="col-8 mt-3">
-                        <input class="form-control" type="text" name="telefono" id="telefono">
-                    </div>
-                </div>
-
-                {{-- Provincia --}}
-                <div class="row">
-                    <div class="col-2 mt-3">
-                        Provincia
-                    </div>
-                    <div class="col-8 mt-3">
-                        <select class="form-control" name="provincia" id="provincia">
-                            <option value="" selected>Seleccione</option>
-                            @foreach ($provincias as $provincia)
-                                <option value="{{$provincia->id}}">{{$provincia->nombre_provincia}}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-            </div>
         </div>
-        {{-- Termina seccion para alta de nueva direccion --}}
 
-        {{-- Dependencia input --}}
-        <div class="row">
-            <div class="col-2 mt-3">
-                Dependencia
-            </div>
-            <div class="col-8 mt-3">
-                <select class="form-control" name="dependencia" id="dependencia" onchange="mostrarResponsable()">
-                    <option value="" selected>Seleccione</option>
-                    <option value="1">Ministerio de cultura de la nacion</option>
-                </select>
-            </div>
-        </div>
-        {{-- Dependencia input --}}
-
-        {{-- Seccion para mostrar al responsable --}}
+        {{-- Seccion para mostrar al responsable HAY QUE HACERLA DINAMICA--}}
         <div class="row mt-5 border-top" id="seccionResponsable" style="display: none">
             <div class="col">
 
@@ -216,6 +132,7 @@
         </div>
         {{-- Termina seccion para mostrar al responsable --}}
 
+
         <div class="row mt-4">
             <div class="col-6 text-end">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
@@ -225,4 +142,3 @@
             </div>
         </div>
     </div>
-</form>

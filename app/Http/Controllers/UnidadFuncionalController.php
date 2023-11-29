@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Complejo;
+use App\Models\Provincia;
+use App\Models\UnidadFuncional;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UnidadFuncionalController extends Controller
 {
@@ -23,7 +27,17 @@ class UnidadFuncionalController extends Controller
      */
     public function create()
     {
-        return view('ubicaciones.unidadFuncional.alta');
+        $direcciones = DB::table('dir')
+                ->join('provincia', 'provincia.id', '=', 'dir.prov_id')
+                ->select('dir.*', 'provincia.nombre_provincia')
+                ->get();
+        $provincias = Provincia::all();
+        $complejos = Complejo::where('chk_uf', '=', 1)->get();
+        //Tambien se tendrian que agarrar las dependencias de X jerarquia
+
+        return view('ubicaciones.unidadFuncional.alta')->with('direcciones', $direcciones)
+                                        ->with('provincias', $provincias)
+                                        ->with('complejos', $complejos);
     }
 
     /**
@@ -80,5 +94,29 @@ class UnidadFuncionalController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Devuelve todas las unidades funcionales que pertenezcan a un complejo.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getByComplejo($idComplejo)
+    {
+        $ufs = UnidadFuncional::where('com_id', '=', $idComplejo)->get();
+        return response()->json($ufs);
+    }
+
+    /**
+     * Devuelve una vista que tiene un select cargado con todas las UF del complejo elegido.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getSelectByComplejo($idComplejo)
+    {
+        $ufs = UnidadFuncional::where('com_id', '=', $idComplejo)->get();
+        return view('ubicaciones.unidadFuncional.select')->with('ufs', $ufs);
     }
 }

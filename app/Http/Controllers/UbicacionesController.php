@@ -73,7 +73,7 @@ class UbicacionesController extends Controller
      */
     public function create()
     {
-        //
+        return view('ubicaciones.alta');
     }
 
     /**

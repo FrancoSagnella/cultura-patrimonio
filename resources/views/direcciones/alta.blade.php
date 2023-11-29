@@ -73,13 +73,15 @@
         </div>
         {{-- telefono input --}}
 
-        <div class="row mt-4">
-            <div class="col-6 text-end">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        @if($fromAltaDirecciones)
+            <div class="row mt-4">
+                <div class="col-6 text-end">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+                <div class="col-6">
+                    <button type="button" class="btn btn-primary" onclick="enviarFormAlta('direcciones')">Guardar</button>
+                </div>
             </div>
-            <div class="col-6">
-                <button type="button" class="btn btn-primary" onclick="enviarFormAlta('direcciones')">Guardar</button>
-            </div>
-        </div>
+        @endif
     </div>
 </form>
