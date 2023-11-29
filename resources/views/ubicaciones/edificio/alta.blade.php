@@ -1,22 +1,7 @@
 
 <div class="container">
-    {{-- Complejo input --}}
-    <div class="row">
-        <div class="col-2 mt-3">
-            Complejo
-        </div>
-        <div class="col-8 mt-3">
-            <select class="form-control" name="complejo" id="complejo">
-                <option value="" selected>Seleccione</option>
-                @foreach ($complejos as $complejo)
-                    <option value="{{$complejo->id}}">{{$complejo->nom}}</option>
-                @endforeach
-            </select>
-        </div>
-    </div>
-    {{-- Complejo input --}}
 
-    {{-- Nombre unidad funcional input --}}
+    {{-- Nombre complejo / edificio input --}}
     <div class="row">
         <div class="col-2 mt-3">
             Nombre
@@ -25,7 +10,7 @@
             <input class="form-control" type="text" name="nombre" id="nombre">
         </div>
     </div>
-    {{-- Nombre unidad funcional input --}}
+    {{-- Nombre complejo / edificio input --}}
 
     {{-- Dependencia input --}}
     <div class="row">
@@ -152,7 +137,7 @@
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
         </div>
         <div class="col-6">
-            <button type="button" class="btn btn-primary" onclick="enviarFormAlta('unidades-funcionales')">Guardar</button>
+            <button type="button" class="btn btn-primary" onclick="enviarFormAlta('edificios')">Guardar</button>
         </div>
     </div>
 </div>

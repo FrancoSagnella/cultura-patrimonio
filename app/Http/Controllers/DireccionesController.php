@@ -34,7 +34,18 @@ class DireccionesController extends Controller
     public function create()
     {
         $provincias = Provincia::all();
-        return view('direcciones.alta')->with('provincias', $provincias);
+        return view('direcciones.alta')->with('provincias', $provincias)->with('fromAltaDirecciones', true);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createGeneric()
+    {
+        $provincias = Provincia::all();
+        return view('direcciones.alta')->with('provincias', $provincias)->with('fromAltaDirecciones', false);
     }
 
     /**

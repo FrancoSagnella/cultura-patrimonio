@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Complejo;
+use App\Models\Ubicacion;
 use Illuminate\Http\Request;
 
 class OficinaController extends Controller
@@ -23,7 +25,8 @@ class OficinaController extends Controller
      */
     public function create()
     {
-        return view('ubicaciones.oficina.alta');
+        $complejos = Complejo::all();
+        return view('ubicaciones.oficina.alta')->with('complejos', $complejos);
     }
 
     /**
@@ -80,5 +83,29 @@ class OficinaController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    /**
+     * Devuelve todas las unidades funcionales que pertenezcan a un complejo.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getByUF($idPiso)
+    {
+        $oficinas = Ubicacion::where('piso', '=', $idPiso)->get();
+        return response()->json($oficinas);
+    }
+
+    /**
+     * Devuelve una vista que tiene un select cargado con todas las UF del complejo elegido.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function getSelectByUF($idPiso)
+    {
+        $oficinas = Ubicacion::where('piso', '=', $idPiso)->get();
+        return view('ubicaciones.piso.select')->with('oficinas', $oficinas);
     }
 }

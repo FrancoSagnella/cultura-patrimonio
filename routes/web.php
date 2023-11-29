@@ -4,6 +4,7 @@ use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\ComplejoController;
 use App\Http\Controllers\DependenciasController;
 use App\Http\Controllers\DireccionesController;
+use App\Http\Controllers\EdificioController;
 use App\Http\Controllers\OficinaController;
 use App\Http\Controllers\PatrimonioController;
 use App\Http\Controllers\PisoController;
@@ -63,13 +64,24 @@ Route::resource('responsables', ResponsablesController::class);
 
 Route::resource('dependencias', DependenciasController::class);
 
+Route::get('/direcciones/createGeneric', [DireccionesController::class, 'createGeneric'])->name('direcciones.createGeneric');
 Route::resource('direcciones', DireccionesController::class);
 
-Route::resource('complejos', ComplejoController::class);
-Route::resource('unidades-funcionales', UnidadFuncionalController::class);
-Route::resource('pisos', PisoController::class);
-Route::resource('oficinas', OficinaController::class);
+
 Route::resource('ubicaciones', UbicacionesController::class);
+Route::resource('complejos', ComplejoController::class);
+Route::resource('edificios', EdificioController::class);
+Route::get('/unidades-funcionales/complejo/{idComplejo}', [UnidadFuncionalController::class, 'getByComplejo'])->name('unidades-funcionales.getByComplejo');
+Route::get('/unidades-funcionales/complejo/select/{idComplejo}', [UnidadFuncionalController::class, 'getSelectByComplejo'])->name('unidades-funcionales.getSelectByComplejo');
+Route::resource('unidades-funcionales', UnidadFuncionalController::class);
+Route::get('/pisos/uf/{idUF}', [PisoController::class, 'getByUF'])->name('pisos.getByUF');
+Route::get('/pisos/uf/select/{idUF}', [PisoController::class, 'getSelectByUF'])->name('pisos.getSelectByUF');
+Route::resource('pisos', PisoController::class);
+Route::get('/oficinas/piso/{idPiso}', [OficinaController::class, 'getByPiso'])->name('oficinas.getByPiso');
+Route::get('/oficinas/piso/select/{idPiso}', [OficinaController::class, 'getSelectByPiso'])->name('oficinas.getSelectByPiso');
+Route::resource('oficinas', OficinaController::class);
+
+
 
 Route::resource('tipos-bien', TipoBienController::class);
 

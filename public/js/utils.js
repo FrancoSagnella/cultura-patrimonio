@@ -86,3 +86,11 @@ const habilitar = (ruta, id) => {
       });
 
 }
+
+//Es como el cargarForm alta pero mas generico
+const loadContent = (ruta, contentDiv) => {
+    $("#"+contentDiv).empty();
+    $.get(ruta, (data, status) => {
+        $("#"+contentDiv).append(data);
+    });
+}
