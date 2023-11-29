@@ -6,11 +6,23 @@
   }
 @media screen and (max-width: 767px) {
 /* Aquí van los estilos para dispositivos móviles */
+.contenedor-gris-redondeado{
+  padding-left: 25px;
+  padding-right: 25px;
+}
 }
 @media screen and (min-width: 768px) and (max-width: 1024px) {
 /* Aquí van los estilos para tablets */
+.contenedor-gris-redondeado{
+  padding-left: 35px;
+  padding-right: 35px;
+}
 }
 @media screen and (min-width: 1025px) {
+  .contenedor-gris-redondeado{
+    padding-left: 50px;
+    padding-right: 50px;
+  }
 /* Aquí van los estilos para notebooks y monitores de computadora */
 }
 .sidebar {
@@ -129,6 +141,7 @@ background-color: var(--color-cultura-white);
     border-collapse: separate;
     border-spacing: 0 5px;
     font-size: 14px;
+    width: 100%;
   }
   
   .cultura-table thead {

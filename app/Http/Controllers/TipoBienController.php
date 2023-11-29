@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TipoBien;
-use App\Models\TipoBienAmortizacion;
 use Paginator\Paginator;
+use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Validator;
+use stdClass;
 
 class TipoBienController extends Controller
 {
@@ -27,10 +29,7 @@ class TipoBienController extends Controller
      */
     public function create()
     {
-        $tiposBienAmortizacion = TipoBienAmortizacion::all();
-
-        return view('tipo-bien.altaTipoBien')->with('tiposBienAmortizacion', $tiposBienAmortizacion);
-
+       return view('tipo-bien.alta');
     }
 
     /**
@@ -41,7 +40,32 @@ class TipoBienController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //creo response
+        $response = new stdClass();
+        $response->message = "ok";
+
+        //se validan inputs
+        $validator = Validator::make($request->all(), [
+            'cod_presup' => 'required',
+            'tipo_bien' => 'required',
+            'nom' => 'required',
+            'descripcion' => 'required',
+            'amortizacion' => 'required',
+            'alicuota' => 'required',
+        ]);
+
+        //en caso de error en validacion, seteo errors en el response y devuelvo
+        if($validator->fails()) {
+            $response->message = "error";
+            $response->errors = $validator->messages()->get("*");
+
+            return response()->json($response);
+        }
+    
+            //Si la validacion se pasa, hago el alta
+            TipoBien::create($request->all());
+    
+            return response()->json($response);
     }
 
     /**

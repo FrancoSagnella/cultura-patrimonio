@@ -11,5 +11,13 @@ class TipoBien extends Model
 
     //De momento por lo menos uso esta
     protected $table = 'tipo_bien';
+    protected $fillable =[
+                            'cod_presup',
+                            'tipo_bien',
+                            'nom',
+                            'descripcion',
+                            'amortizacion',
+                            'alicuota'
+                        ];
 
 }
