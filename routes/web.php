@@ -17,6 +17,7 @@ use App\Http\Controllers\TipoResponsableController;
 use App\Http\Controllers\UbicacionesController;
 use App\Http\Controllers\UnidadFuncionalController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\TipoRemitoController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -80,8 +81,11 @@ Route::resource('tipos-asignacion', TipoAsignacionController::class);
 Route::get('tipos-asignacion/deshabilitar/{id}', [TipoAsignacionController::class, 'disable'])->name('tipos-asignacion.disable');
 Route::get('tipos-asignacion/habilitar/{id}', [TipoAsignacionController::class, 'enable'])->name('tipos-asignacion.enable');
 
-
 Route::resource('tipos-estado', TipoEstadoController::class);
 Route::get('tipos-estado/deshabilitar/{id}', [TipoEstadoController::class, 'disable'])->name('tipos-estado.disable');
 Route::get('tipos-estado/habilitar/{id}', [TipoEstadoController::class, 'enable'])->name('tipos-estado.enable');
+
+Route::resource('tipos-remito', TipoRemitoController::class);
+Route::get('tipos-remito/deshabilitar/{id}', [TipoRemitoController::class, 'disable'])->name('tipos-remito.disable');
+Route::get('tipos-remito/habilitar/{id}', [TipoRemitoController::class, 'enable'])->name('tipos-remito.enable');
 
