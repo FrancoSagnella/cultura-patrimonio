@@ -31,8 +31,8 @@
                 @foreach ($tiposResponsable as $tipoResponsable)
                 <tr>
                   <td class="text-center">{{$tipoResponsable->id}}</td>
-                  <td class="text-center">{{$tipoResponsable->tipo_responsable}}</td>
-                  <td class="text-center">{{$tipoResponsable->descripcion ? $tipoResponsable->descripcion : '-'   }}</td>
+                  <td class="text-center">{{$tipoResponsable->descr}}</td>
+                  <td class="text-center">{{$tipoResponsable->text}}</td>
                   <td>
                     <button onclick="mostrarFormEditar('tipos-responsable', {{ $tipoResponsable->id }})" type="button" class="btn btn-primary botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                         Editar

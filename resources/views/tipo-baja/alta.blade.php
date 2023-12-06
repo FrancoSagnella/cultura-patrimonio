@@ -3,9 +3,18 @@
     {{-- Nombre Ingreso input --}}
     <div class="container">
         <div class="row">
-            <div class="col-md-8 offset-md-2 mt-3">
-                <label for="tipo_baja">Tipo Baja</label>
-                <input class="form-control" type="text" name="tipo_baja" id="tipo_baja">
+            <div class="col-md-4 mt-3">
+                Tipo baja
+            </div>
+            <div class="col-md-8 mt-3">
+                <input class="form-control" type="text" name="descr" id="descr">
+            </div>
+            <div class="col-md-4 mt-3">
+                Descripción
+            </div>
+            <div class="col-md-8 mt-3">
+                {{-- <input class="form-control" type="text" name="descripcion"> --}}
+                <textarea name="text"  class="form-control" cols="30" rows="10"></textarea>
             </div>
         </div>
         {{-- Nombre Ingreso input --}}

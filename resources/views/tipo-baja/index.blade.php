@@ -19,6 +19,7 @@
                 <tr>
                     <th scope="col"><label class="d-flex justify-content-center">Id</label></th>
                     <th scope="col"><label class="d-flex justify-content-center">Tipo Baja</label></th>
+                    <th scope="col"><label class="d-flex justify-content-center">Tipo Descripción</label></th>
                   <th scope="text-center col">
                     <button onclick="mostrarFormAlta('tipos-baja')" type="button" class="btn btn-success botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                         Nuevo Tipo de Baja
@@ -30,7 +31,8 @@
                 @foreach ($tiposBaja as $tipoBaja)
                 <tr>
                   <td class="text-center">{{$tipoBaja->id}}</td>
-                  <td class="text-center">{{$tipoBaja->tipo_baja}}</td>
+                  <td class="text-center">{{$tipoBaja->descr}}</td>
+                  <td class="text-center">{{$tipoBaja->text}}</td>
                   <td>
                     <button onclick="mostrarFormEditar('tipos-baja', {{ $tipoBaja->id }})" type="button" class="btn btn-primary botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                         Editar

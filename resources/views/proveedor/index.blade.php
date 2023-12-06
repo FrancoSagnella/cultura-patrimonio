@@ -25,8 +25,9 @@
         <thead>
           <tr>
             <th scope="col"><label class="d-flex justify-content-center">id</label></th>
-            <th scope="col"><label class="d-flex justify-content-center">Nombre proveedor<label></th>
-            <th scope="col"><label class="d-flex justify-content-center">Descripcion proveedor<label></th>
+            <th scope="col"><label class="d-flex justify-content-center">Nombre<label></th>
+            <th scope="col"><label class="d-flex justify-content-center">Apellido<label></th>
+            {{-- <th scope="col"><label class="d-flex justify-content-center">Descripcion proveedor<label></th> --}}
             <th scope="col"><label class="d-flex justify-content-center">Direccion</label></th>
             <th scope="col"><label class="d-flex justify-content-center">Provincia</label></th>
             <th scope="col"><label class="d-flex justify-content-center">Localidad</label></th>
@@ -45,13 +46,14 @@
           @foreach ($proveedores as $proveedor)
           <tr>
               <td class="text-center">{{$proveedor->id}}</td>
-              <td>{{$proveedor->nombre_proveedor}}</td>
-              <td>{{$proveedor->descripcion_proveedor}}</td>
-              <td>{{$proveedor->calle}} {{$proveedor->numero}} {{$proveedor->piso}} {{$proveedor->departamento}}</td>
-              <td>{{$proveedor->provincia_id}}</td>
-              <td>{{$proveedor->localidad}}</td>
-              <td>{{$proveedor->codigo_postal}}</td>
-              <td>{{$proveedor->telefono}}</td>
+              <td>{{$proveedor->nom}}</td>
+              <td>{{$proveedor->ape}}</td>
+              {{-- <td>{{$proveedor->descripcion_proveedor}}</td> --}}
+              <td>{{$proveedor->calle}} {{$proveedor->nro}} {{$proveedor->piso}} {{$proveedor->depto}}</td>
+              <td>{{$proveedor->prov_id}}</td>
+              <td>{{$proveedor->loc_id}}</td>
+              <td>{{$proveedor->cp}}</td>
+              <td>{{$proveedor->tel}}</td>
               {{-- <td class="text-center">{{$tipoBien->parent_id ? $tipoBien->parent_id : '-'   }}</td>
               <td class="text-center">{{$tipoBien->codigo_presup}}</td> --}}
               <td>

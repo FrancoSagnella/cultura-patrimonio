@@ -20,6 +20,7 @@
                   <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Remito</th>
+                    <th scope="col">Descripción</th>
                     <th scope="col">
                         <button onclick="mostrarFormAlta('tipos-remito')" type="button" class="btn btn-success botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                             Nuevo Tipo de Remito
@@ -31,7 +32,8 @@
                   @foreach ($tiposRemito as $remito)
                       <tr>
                         <th> {{ $remito->id }} </th>
-                        <td> {{ $remito->tipo_remito }} </td>
+                        <td> {{ $remito->descr }} </td>
+                        <td> {{ $remito->text }} </td>
                         <td>
                                 <button onclick="mostrarFormEditar('tipos-remito', {{ $remito->id }})" type="button" class="btn btn-primary botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                                     Editar

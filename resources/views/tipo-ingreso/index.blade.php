@@ -20,6 +20,7 @@
                   <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Ingreso</th>
+                    <th scope="col">Descripción</th>
                     <th scope="col">
                         <button onclick="mostrarFormAlta('tipos-ingreso')" type="button" class="btn btn-success botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                             Nuevo Tipo de Ingreso
@@ -31,7 +32,8 @@
                     @foreach ($tiposIngreso as $ingreso)
                         <tr>
                             <td>{{ $ingreso->id }}</td>
-                            <td>{{ $ingreso->ingreso }}</td>
+                            <td>{{ $ingreso->descr }}</td>
+                            <td>{{ $ingreso->text }}</td>
                             <td>
                                 <button onclick="mostrarFormEditar('tipos-ingreso', {{ $ingreso->id }})" type="button" class="btn btn-primary botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                                     Editar

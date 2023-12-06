@@ -20,6 +20,7 @@
                   <tr>
                     <th scope="col">Id</th>
                     <th scope="col">Estado</th>
+                    <th scope="col">Descripción</th>
                     <th scope="col">
                         <button onclick="mostrarFormAlta('tipos-estado')" type="button" class="btn btn-success botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                             Nuevo Tipo de Estado
@@ -31,7 +32,8 @@
                   @foreach ($tiposEstado as $estado)
                       <tr>
                         <th> {{ $estado->id }} </th>
-                        <td> {{ $estado->universo }} </td>
+                        <td> {{ $estado->descr }} </td>
+                        <td> {{ $estado->text }} </td>
                         <td>
                                 <button onclick="mostrarFormEditar('tipos-estado', {{ $estado->id }})" type="button" class="btn btn-primary botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                                     Editar

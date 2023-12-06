@@ -49,8 +49,9 @@ class TipoBajaController extends Controller
    
            //se validan inputs
            $validator = Validator::make($request->all(), [
-               'tipo_baja' => 'required|max:255'
-           ]);
+            'descr' => 'required|max:128',
+            'text' => 'required'
+        ]);
    
            //en caso de error en validacion, seteo errors en el response y devuelvo
            if($validator->fails()) {
@@ -85,7 +86,8 @@ class TipoBajaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tipoBaja = TipoBaja::where('id', $id)->first();
+        return view('tipo-baja.edicion')->with('tipoBaja', $tipoBaja);
     }
 
     /**
@@ -97,7 +99,31 @@ class TipoBajaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //creo response
+        $response = new stdClass();
+        $response->message = "ok";
+
+        //se validan inputs
+        $validator = Validator::make($request->all(), [
+            'descr' => 'required|max:128',
+            'text' => 'required'
+        ]);
+
+        //en caso de error en validacion, seteo errors en el response y devuelvo
+        if($validator->fails()) {
+            $response->message = "error";
+            $response->errors = $validator->messages()->get("*");
+
+            return response()->json($response);
+        }
+
+        //Si la validacion se pasa, hago el alta
+        $tipoBaja = TipoBaja::where('id', $id)->first();
+        $tipoBaja->descr = $request->get('descr');
+        $tipoBaja->text = $request->get('text');
+        $tipoBaja->save();
+
+        return response()->json($response);
     }
 
     /**

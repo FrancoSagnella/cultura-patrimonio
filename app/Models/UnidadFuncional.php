@@ -9,11 +9,14 @@ class UnidadFuncional extends Model
 {
     use HasFactory;
 
-    protected $table = "uf";
+    protected $table = "ufuncional";
+    public $timestamps=false;
     protected $fillable = [
         	"com_id",
-            "nom",
+            "uf",
+            "descr",
             "dep_id",
             "dir_id",
+            "del",
     ];
 }

@@ -10,7 +10,10 @@ class TipoEstado extends Model
     use HasFactory;
 
     //hay que ver si en la tabla nueva cambia el nombre
-    protected $table = 'universo';
-    protected $fillable = ['universo', 'habilitado'];
-
+    protected $table = 'tipo_estado';
+    public $timestamps=false;
+    protected $fillable = [
+        'descr',
+        'text'
+    ];
 }

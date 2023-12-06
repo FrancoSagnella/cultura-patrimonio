@@ -44,7 +44,8 @@ class TipoEstadoController extends Controller
 
         //se validan inputs
         $validator = Validator::make($request->all(), [
-            'universo' => 'required|max:252'
+            'descr' => 'required|max:128',
+            'text' => 'required'
         ]);
 
         if($validator->fails()) {
@@ -86,7 +87,8 @@ class TipoEstadoController extends Controller
 
         //se validan inputs
         $validator = Validator::make($request->all(), [
-            'universo' => 'required|max:252'
+            'descr' => 'required|max:128',
+            'text' => 'required'
         ]);
 
         //en caso de error en validacion, seteo errors en el response y devuelvo
@@ -99,7 +101,8 @@ class TipoEstadoController extends Controller
 
         //Si la validacion se pasa, hago el alta
         $tipoEstado = TipoEstado::where('id', $id)->first();
-        $tipoEstado->universo = $request->get('universo');
+        $tipoEstado->descr = $request->get('descr');
+        $tipoEstado->text = $request->get('text');
         $tipoEstado->save();
 
         return response()->json($response);

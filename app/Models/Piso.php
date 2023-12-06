@@ -10,10 +10,13 @@ class Piso extends Model
     use HasFactory;
 
     protected $table = "piso";
+    public $timestamps=false;
     protected $fillable = [
         	"com_id",
-            "uf_id",
-            "name",
-            "res_piso",
+            "uf",//uf_id
+            "piso",
+            "descr",
+            "res_id",//"res_piso"
+            "del"
     ];
 }
