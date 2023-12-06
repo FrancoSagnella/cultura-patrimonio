@@ -24,6 +24,6 @@ class Patrimonio extends Model
         'factura',
         'fecha_factura',
         'importe',
-        'exten'	
+        'exten'
     ];
 }

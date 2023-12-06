@@ -55,6 +55,10 @@ Route::prefix('patrimonio')->group(function () {
 //     Route::get('/',[ProveedorController::class,'index'])->name('proveedores.index');
 //     Route::get('/create',[ProveedorController::class,'create'])->name('proveedores.create');
 // });
+
+
+
+
 Route::resource('proveedores', ProveedorController::class);
 
 //Rutas de Seccion Administracion
