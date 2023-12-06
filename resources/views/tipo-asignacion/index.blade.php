@@ -32,8 +32,8 @@
                   @foreach ($tiposAsignacion as $asignacion)
                       <tr>
                         <th> {{ $asignacion->id }} </th>
-                        <td> {{ $asignacion->tipo_asignacion }} </td>
-                        <td> {{ $asignacion->descripcion }} </td>
+                        <td> {{ $asignacion->descr }} </td>
+                        <td> {{ $asignacion->text }} </td>
                         <td>
                                 <button onclick="mostrarFormEditar('tipos-asignacion', {{ $asignacion->id }})" type="button" class="btn btn-primary botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                                     Editar

@@ -9,12 +9,16 @@ class Ubicacion extends Model
 {
     use HasFactory;
 
-    protected $table = "ubi";
+    protected $table = "ubicacion";
+    public $timestamps=false;
     protected $fillable = [
         	"com_id",
-            "uf_id",
+            "uf",// "uf_id",
             "piso",
-            "nom",
+            "ubi",
+            "descr",
             "dep_id",
+            "dep_id_asign",
+            "del"
     ];
 }

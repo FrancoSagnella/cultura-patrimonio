@@ -3,11 +3,18 @@
     {{-- Nombre Ingreso input --}}
     <div class="container">
         <div class="row">
-            <div class="col-4 mt-3">
+            <div class="col-md-4 mt-3">
                 Remito
             </div>
-            <div class="col-8 mt-3">
-                <input class="form-control" type="text" name="tipo_remito" id="tipo_remito">
+            <div class="col-md-8 mt-3">
+                <input class="form-control" type="text" name="descr" id="descr">
+            </div>
+            <div class="col-md-4 mt-3">
+                Descripción
+            </div>
+            <div class="col-md-8 mt-3">
+                {{-- <input class="form-control" type="text" name="descripcion"> --}}
+                <textarea name="text"  class="form-control" cols="30" rows="10"></textarea>
             </div>
         </div>
         {{-- Nombre Ingreso input --}}

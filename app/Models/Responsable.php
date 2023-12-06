@@ -10,15 +10,17 @@ class Responsable extends Model
     use HasFactory;
 
     protected $table = 'responsable';
-    protected $fillable = [ 'tipo_responsable_id',
-                            'dependencia_id',
-                            'nombre',
-                            'apellido',
+    public $timestamps=false;
+    protected $fillable = [ 
+                            'nom',
+                            'ape',
                             'dni',
+                            'tel',
                             'mail',
-                            'tipo_asignacion_id',
-                            'nro_asignacion',
-                            'anio_asignacion',
-                            'descripcion',
-                            'sf_guard_user_id' => 0];
+                            'tipo_asi_id',
+                            'nro_asig',
+                            'anio_asig',
+                            'text',
+                            'del',
+                            'tipo_res_id'];
 }

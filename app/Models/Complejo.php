@@ -9,12 +9,14 @@ class Complejo extends Model
 {
     use HasFactory;
 
-    protected $table = "com";
+    protected $table = "complejo";
+    public $timestamps=false;
     protected $fillable = [
-        	"nom",
+        	"descr",
             "dep_id",
             "dir_id",
             "chk_uf",
+            "del"
     ];
 
     public function getNestedData()

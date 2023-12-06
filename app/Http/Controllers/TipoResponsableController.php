@@ -49,8 +49,8 @@ class TipoResponsableController extends Controller
 
         //se validan inputs
         $validator = Validator::make($request->all(), [
-            'tipo_responsable' => 'required|max:255',
-            'descripcion' => 'max:255',
+            'descr' => 'required|max:128',
+            'text' => 'required'
         ]);
 
         //en caso de error en validacion, seteo errors en el response y devuelvo
@@ -86,7 +86,8 @@ class TipoResponsableController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tipoResponsable = TipoResponsable::where('id', $id)->first();
+        return view('tipo_responsable.edicion')->with('tipoResponsable', $tipoResponsable);
     }
 
     /**
@@ -98,7 +99,31 @@ class TipoResponsableController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //creo response
+        $response = new stdClass();
+        $response->message = "ok";
+
+        //se validan inputs
+        $validator = Validator::make($request->all(), [
+            'descr' => 'required|max:128',
+            'text' => 'required'
+        ]);
+
+        //en caso de error en validacion, seteo errors en el response y devuelvo
+        if($validator->fails()) {
+            $response->message = "error";
+            $response->errors = $validator->messages()->get("*");
+
+            return response()->json($response);
+        }
+
+        //Si la validacion se pasa, hago el alta
+        $tipoResponsable = TipoResponsable::where('id', $id)->first();
+        $tipoResponsable->descr = $request->get('descr');
+        $tipoResponsable->text = $request->get('text');
+        $tipoResponsable->save();
+
+        return response()->json($response);
     }
 
     /**

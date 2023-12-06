@@ -3,19 +3,17 @@
     {{-- Nombre Ingreso input --}}
     <div class="container">
         <div class="row">
-            <div class="col-4 mt-3">
-                Ingreso
+            <div class="col-md-4 mt-3">
+                Asignación
             </div>
-            <div class="col-8 mt-3">
-                <input class="form-control" type="text" name="tipo_asignacion" id="tipo_asignacion" value="{{ $asignacion->tipo_asignacion }}">
+            <div class="col-md-8 mt-3">
+                <input class="form-control" type="text" name="descr" id="descr" value="{{ $asignacion->descr }}">
             </div>
-        </div>
-        <div class="row">
-            <div class="col-4 mt-3">
+            <div class="col-md-4 mt-3">
                 Descripción
             </div>
-            <div class="col-8 mt-3">
-                <input class="form-control" type="text" name="descripcion" id="descripcion" value="{{ $asignacion->descripcion }}">
+            <div class="col-md-8 mt-3">
+                <textarea name="text"  class="form-control" cols="30" rows="10">{{ $asignacion->text }}</textarea>
             </div>
         </div>
         {{-- Nombre Ingreso input --}}

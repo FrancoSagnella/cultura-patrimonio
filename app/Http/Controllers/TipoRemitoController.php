@@ -44,7 +44,8 @@ class TipoRemitoController extends Controller
 
         //se validan inputs
         $validator = Validator::make($request->all(), [
-            'tipo_remito' => 'required|max:252'
+            'descr' => 'required|max:128',
+            'text' => 'required'
         ]);
 
         if($validator->fails()) {
@@ -95,7 +96,8 @@ class TipoRemitoController extends Controller
 
         //se validan inputs
         $validator = Validator::make($request->all(), [
-            'tipo_remito' => 'required|max:252'
+            'descr' => 'required|max:128',
+            'text' => 'required'
         ]);
 
         //en caso de error en validacion, seteo errors en el response y devuelvo
@@ -108,7 +110,8 @@ class TipoRemitoController extends Controller
 
         //Si la validacion se pasa, hago el alta
         $tipoRemito = TipoRemito::where('id', $id)->first();
-        $tipoRemito->tipo_remito = $request->get('tipo_remito');
+        $tipoRemito->descr = $request->get('descr');
+        $tipoRemito->text = $request->get('text');
         $tipoRemito->save();
 
         return response()->json($response);

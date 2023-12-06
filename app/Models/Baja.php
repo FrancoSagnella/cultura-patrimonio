@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Patrimonio extends Model
+class Baja extends Model
 {
     use HasFactory;
-    protected $table = 'patrimonio';
+    //baja patrimonial, se va a usar mas adelante, sin codeo
+    protected $table = 'baja';
     public $timestamps=false;
     protected $fillable=[
         'inventario',

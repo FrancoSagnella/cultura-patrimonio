@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Dependencia;
+use Paginator\Paginator;
+use Illuminate\Auth\Events\Validated;
+use Illuminate\Support\Facades\Validator;
+use stdClass;
 
 class DependenciasController extends Controller
 {
@@ -24,6 +29,8 @@ class DependenciasController extends Controller
     public function create()
     {
         //
+        $dependencia_padre = Dependencia::whereNull('dep_padre_id')->get();
+        return view('dependencias.alta')->with('dependencia_padre', $dependencia_padre);
     }
 
     /**

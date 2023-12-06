@@ -11,17 +11,19 @@ class Proveedor extends Model
 
     //De momento por lo menos uso esta
     protected $table = 'proveedor';
+    public $timestamps=false;
     protected $fillable = [
-        'nombre_proveedor',
-        'descripcion_proveedor',
+        'nom',
+        'ape',
+        // 'descripcion_proveedor',
+        'prov_id',
+        'loc_id',
+        'cp',
         'calle',
-        'numero',
+        'nro',
         'piso',
-        'departamento',
-        'localidad',
-        'provincia_id',
-        'telefono',
-        'codigo_postal',
-        'sf_guard_user_id' => 1
+        'depto',
+        'tel',
+        'del'
     ];
 }

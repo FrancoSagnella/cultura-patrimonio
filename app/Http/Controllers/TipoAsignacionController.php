@@ -45,8 +45,8 @@ class TipoAsignacionController extends Controller
 
         //se validan inputs
         $validator = Validator::make($request->all(), [
-            'tipo_asignacion' => 'required|max:252',
-            'descripcion' => 'required|max:500'
+            'descr' => 'required|max:128',
+            'text' => 'required'
         ]);
 
         if($validator->fails()) {
@@ -97,8 +97,8 @@ class TipoAsignacionController extends Controller
 
         //se validan inputs
         $validator = Validator::make($request->all(), [
-            'tipo_asignacion' => 'required|max:252',
-            'descripcion' => 'required|max:500'
+            'descr' => 'required|max:128',
+            'text' => 'required'
         ]);
 
         //en caso de error en validacion, seteo errors en el response y devuelvo
@@ -111,8 +111,8 @@ class TipoAsignacionController extends Controller
 
         //Si la validacion se pasa, hago el alta
         $tipoAsignacion = TipoAsignacion::where('id', $id)->first();
-        $tipoAsignacion->tipo_asignacion = $request->get('tipo_asignacion');
-        $tipoAsignacion->descripcion = $request->get('descripcion');
+        $tipoAsignacion->descr = $request->get('descr');
+        $tipoAsignacion->text = $request->get('text');
         $tipoAsignacion->save();
 
         return response()->json($response);

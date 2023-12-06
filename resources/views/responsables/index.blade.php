@@ -30,12 +30,14 @@
                   <th scope="col"><label class="d-flex justify-content-center">Nombre</label></th>
                   <th scope="col"><label class="d-flex justify-content-center">Apellido</label></th>
                   <th scope="col"><label class="d-flex justify-content-center">DNI</label></th>
+                  <th scope="col"><label class="d-flex justify-content-center">Teléfono</label></th>
                   <th scope="col"><label class="d-flex justify-content-center">Email</label></th>
-                  <th scope="col"><label class="d-flex justify-content-center">Descripcion</label></th>
                   <th scope="col"><label class="d-flex justify-content-center">Numero Asignación</label></th>
                   <th scope="col"><label class="d-flex justify-content-center">Año Asiganción</label></th>
                   <th scope="col"><label class="d-flex justify-content-center">Tipo Asiganción</label></th>
                   <th scope="col"><label class="d-flex justify-content-center">Tipo Responsable</label></th>
+                  <th scope="col"><label class="d-flex justify-content-center">Descripción</label></th>
+                  <th scope="col"><label class="d-flex justify-content-center">Estado</label></th>
                   <th scope="col">
                     <button onclick="mostrarFormAlta('responsables')" type="button" class="btn btn-success botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                         Nuevo Responsable
@@ -49,15 +51,18 @@
                 @foreach ($responsables as $responsable)
                 <tr>
                     <td class="text-center">{{$responsable->id}}</td>
-                    <td>{{$responsable->nombre}}</td>
-                    <td>{{$responsable->apellido}}</td>
+                    <td>{{$responsable->nom}}</td>
+                    <td>{{$responsable->ape}}</td>
                     <td>{{$responsable->dni}}</td>
+                    <td>{{$responsable->tel}}</td>
                     <td>{{$responsable->mail}}</td>
-                    <td>{{$responsable->descripcion}}</td>
-                    <td>{{$responsable->nro_asignacion}}</td>
-                    <td>{{$responsable->anio_asignacion}}</td>
-                    <td>{{$responsable->tipo_asignacion}}</td>
-                    <td>{{$responsable->tipo_responsable}}</td>
+                    <td>{{$responsable->desc_asign}}</td>
+                    <td>{{$responsable->nro_asig}}</td>
+                    <td>{{$responsable->anio_asig}}</td>
+                    <td>{{$responsable->desc_tipo_resp}}</td>
+                    <td>{{$responsable->text}}</td>
+                    <td>{{$responsable->del}}</td>
+
                     {{-- <td class="text-center">{{$tipoBien->parent_id ? $tipoBien->parent_id : '-'   }}</td>
                     <td class="text-center">{{$tipoBien->codigo_presup}}</td> --}}
                     <td>
