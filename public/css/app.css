@@ -126,11 +126,32 @@ footer {
     min-height: calc(100vh - 20vh);
 }
  .titulo-redondeado-celeste{
-    color: white;
+    color: #fff;
     background-color: #37bbed;
     border-radius: 1rem;
+    font-size: 32px;
+    /* font-family: "Encode-Sans"; */
  }
-
+.card-patrimonial{
+    background-color:#d9d9d9 ;
+    border-radius:20px ;
+}
+.card-filtros{
+    
+}
+input#buscar{
+    width: 202px;
+    height: 40px;
+    background-color: #d9d9d9;
+    border-radius: 20px;
+    border: 0;
+}
+input#buscar::placeholder{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 .borde-celeste{
     border: 2px solid #37bbed;
     border-radius: 1rem;
