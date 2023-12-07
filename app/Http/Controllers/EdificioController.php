@@ -25,9 +25,9 @@ class EdificioController extends Controller
      */
     public function create()
     {
-        $direcciones = DB::table('dir')
-                ->join('provincia', 'provincia.id', '=', 'dir.prov_id')
-                ->select('dir.*', 'provincia.nombre_provincia')
+        $direcciones = DB::table('direccion')
+                ->join('provincia', 'provincia_id', '=', 'direccion.provincia_id')
+                ->select('direccion.*', 'provincia.descr')
                 ->get();
         $provincias = Provincia::all();
         //Tambien se tendrian que agarrar las dependencias de X jerarquia
