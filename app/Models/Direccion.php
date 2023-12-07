@@ -12,8 +12,8 @@ class Direccion extends Model
     protected $table = 'direccion';
     public $timestamps=false;
     protected $fillable = [
-        'prov_id',
-        'loc_id',
+        'provincia_id',
+        'localidad',
         'cp',
         'calle',
         'nro',

@@ -1,3 +1,4 @@
+
 const mostrarFormAlta = (ruta) => {
 
     $("#modal-body").empty();
@@ -93,4 +94,20 @@ const loadContent = (ruta, contentDiv) => {
     $.get(ruta, (data, status) => {
         $("#"+contentDiv).append(data);
     });
+}
+//carga select localidades segun provincia
+function getLocalidades(eltoken ){
+    $("#localidad").html('<option value="" id="optionlocdefault" selected="selected">Cargando...</option>');
+    jQuery.ajax({
+        type: "get",
+        url: url+'/getLocalidades/'+$("#provincia_id").val(),
+        data:'_token = ' + eltoken,
+        success: function( msg ) {
+            for(var i = 0; i< msg.data.length; i++ ){
+                $("#localidad").append("<option value= "+msg.data[i].localidad+">"+msg.data[i].descr+"</option>");
+            }
+            $("#optionlocdefault").html("Seleccionar...");
+        }
+    });
+    $("#user-destino-cp").val("");
 }

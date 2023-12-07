@@ -1,3 +1,9 @@
+<script>
+var token="<?php echo csrf_token() ?>";
+var url= "{{ url('/') }}";
+
+</script>
+
 <form action="/" method="post" enctype="multipart/form-data" id="formAlta">
     @csrf
     <div class="container">
@@ -8,10 +14,10 @@
                 Provincia
             </div>
             <div class="col-8 mt-3">
-                <select class="form-control" name="prov_id" id="prov_id">
+                <select class="form-control" name="provincia_id" id="provincia_id" onchange="getLocalidades(token)">
                     <option value="" selected>Seleccione una Provincia</option>
                     @foreach ($provincias as $provincia)
-                        <option value="{{$provincia->id}}">{{$provincia->nombre_provincia}}</option>
+                        <option value="{{$provincia->id}}">{{$provincia->descr}}</option>
                     @endforeach
                 </select>
             </div>
@@ -24,7 +30,10 @@
                 Localidad
             </div>
             <div class="col-8 mt-3">
-                <input class="form-control" type="text" name="loc" id="loc">
+                <select class="form-control" name="localidad" id="localidad" class="form-control">
+
+                </select>
+                {{-- <input class="form-control" type="text" name="loc" id="loc"> --}}
             </div>
         </div>
         {{-- Localidad input --}}
@@ -69,6 +78,8 @@
             </div>
             <div class="col-8 mt-3">
                 <input class="form-control" type="text" name="tel" id="tel">
+                <input class="form-control" type="hidden" name="del" id="del" value="0">
+
             </div>
         </div>
         {{-- telefono input --}}

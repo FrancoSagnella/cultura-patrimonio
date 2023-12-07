@@ -19,6 +19,7 @@ use App\Http\Controllers\UbicacionesController;
 use App\Http\Controllers\UnidadFuncionalController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\TipoRemitoController;
+use App\Http\Controllers\LocalidadesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -104,4 +105,4 @@ Route::get('tipos-estado/habilitar/{id}', [TipoEstadoController::class, 'enable'
 Route::resource('tipos-remito', TipoRemitoController::class);
 Route::get('tipos-remito/deshabilitar/{id}', [TipoRemitoController::class, 'disable'])->name('tipos-remito.disable');
 Route::get('tipos-remito/habilitar/{id}', [TipoRemitoController::class, 'enable'])->name('tipos-remito.enable');
-
+Route::get('getLocalidades/{prov_id}', [LocalidadesController::class, 'getLocalidades']);

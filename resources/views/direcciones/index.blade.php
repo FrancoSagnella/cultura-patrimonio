@@ -34,8 +34,8 @@
                 <tbody>
                     @foreach ($direcciones as $direccion)
                         <tr>
-                            <td>{{ $direccion->nombre_provincia }}</td>
-                            <td>{{ $direccion->loc }}</td>
+                            <td>{{ $direccion->descr_prov }}</td>
+                            <td>{{ $direccion->descr_loc }}</td>
                             <td>{{ $direccion->cp }}</td>
                             <td>{{ $direccion->calle }}</td>
                             <td>{{ $direccion->nro }}</td>
