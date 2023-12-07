@@ -28,8 +28,8 @@ class UnidadFuncionalController extends Controller
     public function create()
     {
         $direcciones = DB::table('direccion')
-                ->join('provincia', 'provincia.id', '=', 'direccion.prov_id')
-                ->select('direccion.*', 'provincia.nombre_provincia')
+                ->join('provincia', 'provincia.id', '=', 'direccion.provincia_id')
+                ->select('direccion.*', 'provincia.descr')
                 ->get();
         $provincias = Provincia::all();
         $complejos = Complejo::where('chk_uf', '=', 1)->get();
