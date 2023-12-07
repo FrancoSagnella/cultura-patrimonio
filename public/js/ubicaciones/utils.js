@@ -25,14 +25,48 @@ const mostrarFormDomicilio = () => {
 // Muestra o esconde la seccion con los datos del responsable de la dependencia elegida
 // Deberia ir a buscar un responsable a la bbdd, pasandole el id de dependencia
 const mostrarResponsable = () => {
-    let depSeleccionada = $('#dependencia').val();
-    if(depSeleccionada === "")
+
+    let responsable = $('#dependencia option:selected').attr("res_id");
+
+    if(responsable === "")
     {
         $('#seccionResponsable').hide();
     }
     else
     {
+
+        $.get('responsables/'+responsable, (data, status) => {
+
+            $('#nombreResponsable').val(data.message.nom);
+            $('#apellidoResponsable').val(data.message.ape);
+            $('#dniResponsable').val(data.message.dni);
+            $('#mailResponsable').val(data.message.mail);
+            $('#telResponsable').val(data.message.tel);
+            $('#anioAsignacionResponsable').val(data.message.anio_asig);
+            $('#nroAsignacionResponsable').val(data.message.nro_asig);
+            $('#tipoResponsable').append(`<option value="${data.message.tipo_res_id}">
+            ${data.message.tipo_responsable}
+            </option>`);
+            $('#tipoResponsable').val(data.message.tipo_res_id);
+            $('#tipoAsignacionResponsable').append(`<option value="${data.message.tipo_asi_id}">
+            ${data.message.tipo_asignacion}
+            </option>`);
+            $('#tipoAsignacionResponsable').val(data.message.tipo_asi_id);
+
+            $('#nombreResponsable').prop('disabled', true);
+            $('#apellidoResponsable').prop('disabled', true);
+            $('#dniResponsable').prop('disabled', true);
+            $('#mailResponsable').prop('disabled', true);
+            $('#telResponsable').prop('disabled', true);
+            $('#anioAsignacionResponsable').prop('disabled', true);
+            $('#nroAsignacionResponsable').prop('disabled', true);
+            $('#tipoResponsable').prop('disabled', true);
+            $('#tipoAsignacionResponsable').prop('disabled', true);
+
+        });
+
         $('#seccionResponsable').show();
+
     }
 };
 

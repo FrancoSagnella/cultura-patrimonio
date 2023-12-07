@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Complejo;
+use App\Models\Dependencia;
 use App\Models\Direccion;
 use App\Models\Provincia;
 use App\Models\UnidadFuncional;
@@ -32,14 +33,24 @@ class ComplejoController extends Controller
     public function create()
     {
         $direcciones = DB::table('direccion')
-                        ->join('provincia', 'provincia_id', '=', 'direccion.provincia_id')
-                        ->select('direccion.*', 'provincia.descr')
-                        ->get();
+            ->join('provincia', 'provincia.id', '=', 'direccion.provincia_id')
+            ->join('localidad', function ($join) {
+                $join->on('localidad.localidad', '=', 'direccion.localidad')
+                    ->on('localidad.provincia_id', '=', 'direccion.provincia_id');
+            })
+            ->select('direccion.*', 'provincia.descr as provincia_nombre', 'localidad.descr as localidad_nombre')
+            ->get();
+
         $provincias = Provincia::all();
-        //Tambien se tendrian que agarrar las dependencias de X jerarquia
+
+
+        $dependencias = Dependencia::where('jer_id', '1')->get();
+
+        //$direcciones = Direccion::all();
 
         return view('ubicaciones.complejo.alta')->with('direcciones', $direcciones)
-                                                ->with('provincias', $provincias);
+                                                ->with('provincias', $provincias)
+                                                ->with('dependencias', $dependencias);
     }
 
     /**

@@ -15,12 +15,14 @@
         {{-- Dependencia input --}}
         <div class="row">
             <div class="col-2 mt-3">
-                Dependendiente de
+                Dependiente de
             </div>
             <div class="col-8 mt-3">
                 <select class="form-control" name="dependencia" id="dependencia" onchange="mostrarResponsable()">
-                    <option value="" selected>Seleccione</option>
-                    <option value="1">Ministerio de cultura de la nacion</option>
+                    <option value="" selected res_id=""> Seleccione una dependencia</option>
+                    @foreach ($dependencias as $dependencia)
+                        <option value="{{$dependencia->id}}" res_id="{{$dependencia->res_id}}"> {{ $dependencia->descr }} </option>
+                    @endforeach
                 </select>
             </div>
         </div>
@@ -33,9 +35,10 @@
             </div>
             <div class="col-6 mt-3">
                 <select class="form-control" name="direccion" id="direccion">
-                    <option value="" selected>Seleccione</option>
+                    <option value="" selected>Seleccione un domicilio</option>
+
                     @foreach ($direcciones as $direccion)
-                        <option value="{{$direccion->id}}">{{$direccion->nombre_provincia}}, {{$direccion->loc}} {{$direccion->cp}} {{$direccion->calle}} {{$direccion->nro}}, {{$direccion->tel}}</option>
+                        <option value="{{$direccion->id}}"> {{$direccion->provincia_nombre}}, {{$direccion->localidad_nombre}} {{$direccion->cp}} {{$direccion->calle}} {{$direccion->nro}}, {{$direccion->tel}}</option>
                     @endforeach
                 </select>
             </div>
@@ -60,7 +63,9 @@
                         Tipo Responsable
                     </div>
                     <div class="col-8 mt-3">
-                        <input disabled class="form-control" type="text" name="tipoResponsable" id="tipoResponsable" value="Ministro">
+                        <select  class="form-control" name="tipoResponsable" id="tipoResponsable">
+                            <option value="" id_tipo="" selected>Tipo de Responsable</option>
+                        </select>
                     </div>
                 </div>
 
@@ -69,7 +74,7 @@
                         Nombre
                     </div>
                     <div class="col-8 mt-3">
-                        <input disabled class="form-control" type="text" name="nombreResponsable" id="nombreResponsable" value="Juancito">
+                        <input class="form-control" type="text" name="nombreResponsable" id="nombreResponsable" value="">
                     </div>
                 </div>
 
@@ -78,7 +83,7 @@
                         Apellido
                     </div>
                     <div class="col-8 mt-3">
-                        <input disabled class="form-control" type="text" name="apellidoResponsable" id="apellidoResponsable" value="Juancito">
+                        <input class="form-control" type="text" name="apellidoResponsable" id="apellidoResponsable" value="">
                     </div>
                 </div>
 
@@ -87,7 +92,7 @@
                         DNI
                     </div>
                     <div class="col-8 mt-3">
-                        <input disabled class="form-control" type="text" name="dniResponsable" id="dniResponsable" value="11222333">
+                        <input class="form-control" type="text" name="dniResponsable" id="dniResponsable" value="">
                     </div>
                 </div>
 
@@ -96,36 +101,45 @@
                         Mail
                     </div>
                     <div class="col-8 mt-3">
-                        <input disabled class="form-control" type="text" name="mailResponsable" id="mailResponsable" value="Juancito@gmail.com">
+                        <input class="form-control" type="text" name="mailResponsable" id="mailResponsable" value="">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-2 mt-3">
-                        Tipo de Asignacion
+                        Teléfono
                     </div>
                     <div class="col-8 mt-3">
-                        <select disabled class="form-control" name="provincia" id="provincia">
-                            <option value="" selected>Tipo de asignacion</option>
+                        <input class="form-control" type="text" name="telResponsable" id="telResponsable" value="">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-2 mt-3">
+                        Tipo de Asignación
+                    </div>
+                    <div class="col-8 mt-3">
+                        <select class="form-control" name="tipoAsignacionResponsable" id="tipoAsignacionResponsable">
+                            <option value="" id_asignacion="" selected>Tipo de asignación</option>
                         </select>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-2 mt-3">
-                        Numero de Asignacion
+                        Numero de Asignación
                     </div>
                     <div class="col-8 mt-3">
-                        <input disabled class="form-control" type="text" name="nroAsignacionReposnsable" id="nroAsignacionReposnsable" value="2">
+                        <input class="form-control" type="text" name="nroAsignacionResponsable" id="nroAsignacionResponsable" value="">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col-2 mt-3">
-                        Año de Asignacion
+                        Año de Asignación
                     </div>
                     <div class="col-8 mt-3">
-                        <input disabled class="form-control" type="text" name="anioAsignacionReposnsable" id="anioAsignacionReposnsable" value="2020">
+                        <input class="form-control" type="text" name="anioAsignacionResponsable" id="anioAsignacionResponsable" value="">
                     </div>
                 </div>
             </div>

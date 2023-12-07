@@ -55,6 +55,7 @@ class TipoRemitoController extends Controller
         }
 
         TipoRemito::create($request->except('_token'));
+        return response()->json($response);
 
     }
 
