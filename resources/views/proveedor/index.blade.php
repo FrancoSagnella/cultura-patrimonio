@@ -46,17 +46,17 @@
           @foreach ($proveedores as $proveedor)
           <tr>
               <td class="text-center">{{$proveedor->id}}</td>
-              <td>{{$proveedor->nom}}</td>
-              <td>{{$proveedor->ape}}</td>
+              <td class="text-center">{{$proveedor->nom}}</td>
+              <td class="text-center">{{$proveedor->ape}}</td>
               {{-- <td>{{$proveedor->descripcion_proveedor}}</td> --}}
-              <td>{{$proveedor->calle}} {{$proveedor->nro}} {{$proveedor->piso}} {{$proveedor->depto}}</td>
-              <td>{{$proveedor->prov_id}}</td>
-              <td>{{$proveedor->loc_id}}</td>
-              <td>{{$proveedor->cp}}</td>
-              <td>{{$proveedor->tel}}</td>
+              <td class="text-center">{{$proveedor->calle}} {{$proveedor->nro}} {{$proveedor->piso}} {{$proveedor->depto}}</td>
+              <td class="text-center">{{$proveedor->descr_prov}}</td>
+              <td class="text-center">{{$proveedor->descr_loc}}</td>
+              <td class="text-center">{{$proveedor->cp}}</td>
+              <td class="text-center">{{$proveedor->tel}}</td>
               {{-- <td class="text-center">{{$tipoBien->parent_id ? $tipoBien->parent_id : '-'   }}</td>
               <td class="text-center">{{$tipoBien->codigo_presup}}</td> --}}
-              <td>
+              <td class="text-center">
                   <button onclick="mostrarFormEditar('proveedores', {{ $proveedor->id }})" type="button" class="btn btn-primary botones-redondos" data-bs-toggle="modal" data-bs-target="#Modal">
                       Editar
                   </button>

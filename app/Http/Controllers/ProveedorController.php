@@ -22,7 +22,10 @@ class ProveedorController extends Controller
     {
         
         //$proveedores = Proveedor::select("proveedor.id", "proveedor.nombre_proveedor", "proveedor.descripcion_proveedor")->paginate(15);
-        $proveedores = Proveedor::select("*")->paginate(15);
+        $proveedores = Proveedor::select("proveedor.*", 'provincia.descr as descr_prov', 'localidad.descr as descr_loc')                            
+                                ->join('provincia', 'provincia.id', '=', 'proveedor.provincia_id')
+                                ->join('localidad', 'localidad.localidad', '=', 'proveedor.localidad')
+                                ->paginate(15);
 
         return view('proveedor.index')->with('proveedores', $proveedores);
     }
@@ -53,7 +56,16 @@ class ProveedorController extends Controller
 
         //se validan inputs
         $validator = Validator::make($request->all(), [
-            'nombre_proveedor' => 'required|max:255',
+            'nom' => 'required|max:128',
+            'ape' => 'required|max:128',
+            'provincia_id' => 'required',
+            'localidad' => 'required',
+            'cp' => 'required|max:255',
+            'calle' => 'required|max:255',
+            'nro' => 'required|max:255',
+            'piso' => 'required|max:255',
+            'depto' => 'required|max:255',
+            'tel' => 'required|max:255'
         ]);
 
         //en caso de error en validacion, seteo errors en el response y devuelvo
@@ -90,6 +102,10 @@ class ProveedorController extends Controller
     public function edit($id)
     {
         //
+        $proveedor = Proveedor::where('id', $id)->first();
+        $provincias = Provincia::all();
+        return view('proveedor.edicion')->with('proveedor', $proveedor)
+                                            ->with('provincias', $provincias);
     }
 
     /**

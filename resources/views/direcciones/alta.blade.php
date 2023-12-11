@@ -22,8 +22,6 @@ var url= "{{ url('/') }}";
                 </select>
             </div>
         </div>
-        {{-- Provincia Input --}}
-
         {{-- Localidad input --}}
         <div class="row">
             <div class="col-2 mt-3">
@@ -36,8 +34,6 @@ var url= "{{ url('/') }}";
                 {{-- <input class="form-control" type="text" name="loc" id="loc"> --}}
             </div>
         </div>
-        {{-- Localidad input --}}
-
         {{-- calle input --}}
         <div class="row">
             <div class="col-2 mt-3">

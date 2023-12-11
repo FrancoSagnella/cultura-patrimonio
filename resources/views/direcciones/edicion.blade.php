@@ -22,7 +22,6 @@ jQuery.ajax({
         $("#optionlocdefault").html("Seleccionar...");
     }
 });
-$("#user-destino-cp").val("");
 
 </script>
 
