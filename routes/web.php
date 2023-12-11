@@ -4,17 +4,22 @@ use App\Http\Controllers\auth\LoginController;
 use App\Http\Controllers\ComplejoController;
 use App\Http\Controllers\DependenciasController;
 use App\Http\Controllers\DireccionesController;
+use App\Http\Controllers\EdificioController;
 use App\Http\Controllers\OficinaController;
 use App\Http\Controllers\PatrimonioController;
 use App\Http\Controllers\PisoController;
 use App\Http\Controllers\ResponsablesController;
 use App\Http\Controllers\TipoBienController;
+use App\Http\Controllers\TipoBajaController;
 use App\Http\Controllers\TipoIngresoController;
 use App\Http\Controllers\TipoAsignacionController;
+use App\Http\Controllers\TipoEstadoController;
 use App\Http\Controllers\TipoResponsableController;
 use App\Http\Controllers\UbicacionesController;
 use App\Http\Controllers\UnidadFuncionalController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\TipoRemitoController;
+use App\Http\Controllers\LocalidadesController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -51,21 +56,37 @@ Route::prefix('patrimonio')->group(function () {
 //     Route::get('/',[ProveedorController::class,'index'])->name('proveedores.index');
 //     Route::get('/create',[ProveedorController::class,'create'])->name('proveedores.create');
 // });
+
+
+
+
 Route::resource('proveedores', ProveedorController::class);
 
 //Rutas de Seccion Administracion
+Route::resource('tipos-baja', TipoBajaController::class);
 Route::resource('tipos-responsable', TipoResponsableController::class);
 Route::resource('responsables', ResponsablesController::class);
 
 Route::resource('dependencias', DependenciasController::class);
 
+Route::get('/direcciones/createGeneric', [DireccionesController::class, 'createGeneric'])->name('direcciones.createGeneric');
 Route::resource('direcciones', DireccionesController::class);
 
-Route::resource('complejos', ComplejoController::class);
-Route::resource('unidades-funcionales', UnidadFuncionalController::class);
-Route::resource('pisos', PisoController::class);
-Route::resource('oficinas', OficinaController::class);
+
 Route::resource('ubicaciones', UbicacionesController::class);
+Route::resource('complejos', ComplejoController::class);
+Route::resource('edificios', EdificioController::class);
+Route::get('/unidades-funcionales/complejo/{idComplejo}', [UnidadFuncionalController::class, 'getByComplejo'])->name('unidades-funcionales.getByComplejo');
+Route::get('/unidades-funcionales/complejo/select/{idComplejo}', [UnidadFuncionalController::class, 'getSelectByComplejo'])->name('unidades-funcionales.getSelectByComplejo');
+Route::resource('unidades-funcionales', UnidadFuncionalController::class);
+Route::get('/pisos/uf/{idUF}', [PisoController::class, 'getByUF'])->name('pisos.getByUF');
+Route::get('/pisos/uf/select/{idUF}', [PisoController::class, 'getSelectByUF'])->name('pisos.getSelectByUF');
+Route::resource('pisos', PisoController::class);
+Route::get('/oficinas/piso/{idPiso}', [OficinaController::class, 'getByPiso'])->name('oficinas.getByPiso');
+Route::get('/oficinas/piso/select/{idPiso}', [OficinaController::class, 'getSelectByPiso'])->name('oficinas.getSelectByPiso');
+Route::resource('oficinas', OficinaController::class);
+
+
 
 Route::resource('tipos-bien', TipoBienController::class);
 
@@ -74,3 +95,14 @@ Route::get('tipos-ingreso/deshabilitar/{id}', [TipoIngresoController::class, 'di
 Route::get('tipos-ingreso/habilitar/{id}', [TipoIngresoController::class, 'enable'])->name('tipos-ingreso.enable');
 
 Route::resource('tipos-asignacion', TipoAsignacionController::class);
+Route::get('tipos-asignacion/deshabilitar/{id}', [TipoAsignacionController::class, 'disable'])->name('tipos-asignacion.disable');
+Route::get('tipos-asignacion/habilitar/{id}', [TipoAsignacionController::class, 'enable'])->name('tipos-asignacion.enable');
+
+Route::resource('tipos-estado', TipoEstadoController::class);
+Route::get('tipos-estado/deshabilitar/{id}', [TipoEstadoController::class, 'disable'])->name('tipos-estado.disable');
+Route::get('tipos-estado/habilitar/{id}', [TipoEstadoController::class, 'enable'])->name('tipos-estado.enable');
+
+Route::resource('tipos-remito', TipoRemitoController::class);
+Route::get('tipos-remito/deshabilitar/{id}', [TipoRemitoController::class, 'disable'])->name('tipos-remito.disable');
+Route::get('tipos-remito/habilitar/{id}', [TipoRemitoController::class, 'enable'])->name('tipos-remito.enable');
+Route::get('getLocalidades/{prov_id}', [LocalidadesController::class, 'getLocalidades']);

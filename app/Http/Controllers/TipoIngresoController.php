@@ -46,7 +46,8 @@ class TipoIngresoController extends Controller
 
         //se validan inputs
         $validator = Validator::make($request->all(), [
-            'ingreso' => 'required|max:255',
+            'descr' => 'required|max:128',
+            'text' => 'required'
         ]);
 
         //en caso de error en validacion, seteo errors en el response y devuelvo
@@ -101,7 +102,8 @@ class TipoIngresoController extends Controller
 
         //se validan inputs
         $validator = Validator::make($request->all(), [
-            'ingreso' => 'required|max:255',
+            'descr' => 'required|max:128',
+            'text' => 'required'
         ]);
 
         //en caso de error en validacion, seteo errors en el response y devuelvo
@@ -114,7 +116,8 @@ class TipoIngresoController extends Controller
 
         //Si la validacion se pasa, hago el alta
         $tipoIngreso = TipoIngreso::where('id', $id)->first();
-        $tipoIngreso->ingreso = $request->get('ingreso');
+        $tipoIngreso->descr = $request->get('descr');
+        $tipoIngreso->text = $request->get('text');
         $tipoIngreso->save();
 
         return response()->json($response);

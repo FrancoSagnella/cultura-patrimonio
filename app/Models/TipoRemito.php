@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class TipoRemito extends Model
 {
     use HasFactory;
+    protected $table = 'tipo_remito';
+    public $timestamps=false;
+    protected $fillable = [
+        'descr',
+        'text'
+    ];
 }

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\TipoBienAmortizacion;
+use App\Models\Localidad;
+use stdClass;
 
-class TipoBienAmortizacionController extends Controller
+
+class LocalidadesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +19,15 @@ class TipoBienAmortizacionController extends Controller
     {
         //
     }
+    public function getLocalidades($prov_id)
+    {
+        $response = new stdClass();
+        $response->message = "ok";
+        $response->data = Localidad::where('provincia_id', $prov_id)->get();
 
+
+        return $response;
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -28,10 +38,6 @@ class TipoBienAmortizacionController extends Controller
         //
     }
 
-    public function read()
-    {
-        return TipoBienAmortizacion::all();
-    }
     /**
      * Store a newly created resource in storage.
      *

@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Complejo;
+use App\Models\Piso;
+use App\Models\TipoIngreso;
+use App\Models\Ubicacion;
+use App\Models\UnidadFuncional;
 use Illuminate\Http\Request;
 
 class UbicacionesController extends Controller
@@ -13,7 +18,52 @@ class UbicacionesController extends Controller
      */
     public function index()
     {
-        //
+        $nestedData = [];
+
+        $complejos = Complejo::all();
+
+        foreach($complejos as $comKey => $complejo){
+
+            $nestedData[$comKey] = [
+                'complejo' => $complejo,
+                'uf' => []
+            ];
+
+            $unidadesFuncionales = UnidadFuncional::where("com_id", "=", $complejo->id)->get();
+
+            foreach($unidadesFuncionales as $ufKey => $unidadFuncional){
+
+                $nestedData[$comKey]['uf'][$ufKey] = [
+                    'uf' => $unidadFuncional,
+                    'piso' => []
+                ];
+
+                $pisos = Piso::where("com_id", "=", $complejo->id)->where("uf_id", "=", $unidadFuncional->id)->get();
+
+                foreach($pisos as $pisoKey => $piso){
+
+                    $nestedData[$comKey]['uf'][$ufKey]['piso'][$pisoKey] = [
+                        'piso' => $piso,
+                        'ubi' => []
+                    ];
+
+                    $ubicaciones = Ubicacion::where("com_id", "=", $complejo->id)->where("uf_id", "=", $unidadFuncional->id)->where("piso", "=", $piso->piso)->get();
+
+                    foreach($ubicaciones as $ubiKey => $ubicacion){
+
+                        $nestedData[$comKey]['uf'][$ufKey]['piso'][$pisoKey]['ubi'][$ubiKey] = [
+                            'ubi' => $ubicacion,
+                        ];
+
+                    }
+
+                }
+
+            }
+
+        }
+
+        return view('ubicaciones.index')->with('complejos', $nestedData);
     }
 
     /**
@@ -23,7 +73,7 @@ class UbicacionesController extends Controller
      */
     public function create()
     {
-        //
+        return view('ubicaciones.alta');
     }
 
     /**

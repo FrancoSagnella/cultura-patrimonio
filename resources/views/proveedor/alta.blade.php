@@ -1,55 +1,68 @@
+<script>
+    var token="<?php echo csrf_token() ?>";
+    var url= "{{ url('/') }}"; 
+</script>
+
 <form action="/proveedores" method="post" enctype="multipart/form-data" id="formAlta">
     @csrf
     {{-- Nombre Ingreso input --}}
     <div class="container">
         <div class="row">
-            <div class="col-md-8 offset-md-2 mt-3">
-                <label for="nombre_proveedor">Nombre Proveedor</label>
-                <input class="form-control" type="text" name="nombre_proveedor" id="nombre_proveedor">
+            <div class="col-md-10 offset-md-1 mt-3">
+                <label for="nom">Nombre</label>
+                <input class="form-control" type="text" name="nom" id="nom">
             </div>
-            <div class="col-md-8 offset-md-2 mt-3">
+            <div class="col-md-10 offset-md-1 mt-3">
+                <label for="ape">Apellido</label>
+                <input class="form-control" type="text" name="ape" id="ape">
+            </div>
+            {{-- <div class="col-md-8 offset-md-2 mt-3">
                 <label for="descripcion_proveedor">Descripcion del proveedor</label>
                 <input class="form-control" type="text" name="descripcion_proveedor" id="descripcion_proveedor">
+            </div> --}}
+                    {{-- Provincia Input --}}
+            <div class="col-md-10 offset-md-1 mt-3">
+                <label for="provincia_id">Provincia</label>
+                <select class="form-control" name="provincia_id" id="provincia_id" onchange="getLocalidades(token)">
+                    <option value="" selected>Seleccione una Provincia</option>
+                    @foreach ($provincias as $provincia)
+                        <option value="{{$provincia->id}}">{{$provincia->descr}}</option>
+                    @endforeach
+                </select>
             </div>
-            <div class="col-md-8 offset-md-2 mt-3">
+            {{-- Localidad input --}}
+            <div class="col-md-10 offset-md-1 mt-3">
+                <label for="localidad">Localidad</label>
+                <select class="form-control" name="localidad" id="localidad" class="form-control">
+                </select>
+            </div>
+            <div class="col-md-10 offset-md-1 mt-3">
                 <label for="calle">Calle</label>
                 <input class="form-control" type="text" name="calle" id="calle">
             </div>
-            <div class="col-md-8 offset-md-2 row mt-3">
+            <div class="col-md-10 offset-md-1 row mt-3">
                 <div class="col-sm-4">                
-                    <label for="numero">Altura</label>
-                    <input class="form-control" type="text" name="numero" id="numero">
+                    <label for="nro">Altura</label>
+                    <input class="form-control" type="text" name="nro" id="nro">
                 </div>
                 <div class="col-sm-4">                
                     <label for="piso">Piso</label>
                     <input class="form-control" type="text" name="piso" id="piso">
                 </div>
                 <div class="col-sm-4">                
-                    <label for="departamento">Departamento</label>
-                    <input class="form-control" type="text" name="departamento" id="departamento">
+                    <label for="depto">Departamento</label>
+                    <input class="form-control" type="text" name="depto" id="depto">
                 </div>
             </div> 
-            <div class="col-md-8 offset-md-2 mt-3">
-                <label for="localidad">Localidad</label>
-                <input class="form-control" type="text" name="localidad" id="localidad">
-            </div>
-            <div class="col-md-8 offset-md-2 mt-3">
-                <label for="provincia_id">Provincia</label>
-                <select class="form-select" name="provincia_id" id="provincia_id">
-                    @foreach($provincias as $provincia)
-                        <option value="{{ $provincia->id }}">{{ $provincia->nombre_provincia }}</option>
-                    @endforeach
-                </select>
-            </div>
-            <div class="col-md-8 offset-md-2 row mt-3">
+            <div class="col-md-10 offset-md-1 row mt-3">
                 <div class="col-sm-6">                
-                    <label for="codigo_postal">Codigo Postal</label>
-                    <input class="form-control" type="text" name="codigo_postal" id="codigo_postal">
+                    <label for="cp">Código Postal</label>
+                    <input class="form-control" type="text" name="cp" id="cp">
                 </div>
                 <div class="col-sm-6">                
-                    <label for="telefono">Telefono</label>
-                    <input class="form-control" type="text" name="telefono" id="telefono">
-                    <input class="form-control" type="hidden" name="sf_guard_user_id" id="sf_guard_user_id">
+                    <label for="tel">Teléfono</label>
+                    <input class="form-control" type="text" name="tel" id="tel">
+                    <input class="form-control" type="hidden" name="del" id="del" value="0">
 
                 </div>
             </div> 

@@ -14,8 +14,8 @@
     </div>
 
     <div class="row mt-3 mb-3">
-        <div class="col">
-            <table class="table table-striped">
+        <div class="panel-body contenedor contenedor-tablas mb-4">
+            <table class="table-responsive cultura-table">
                 <thead>
                   <tr>
                     <th scope="col">Provincia</th>
@@ -34,8 +34,8 @@
                 <tbody>
                     @foreach ($direcciones as $direccion)
                         <tr>
-                            <td>{{ $direccion->nombre_provincia }}</td>
-                            <td>{{ $direccion->loc }}</td>
+                            <td>{{ $direccion->descr_prov }}</td>
+                            <td>{{ $direccion->descr_loc }}</td>
                             <td>{{ $direccion->cp }}</td>
                             <td>{{ $direccion->calle }}</td>
                             <td>{{ $direccion->nro }}</td>

@@ -9,5 +9,9 @@ class TipoAsignacion extends Model
 {
     use HasFactory;
     protected $table = 'tipo_asignacion';
-
+    public $timestamps=false;
+    protected $fillable = [
+        'descr',
+        'text'
+    ];
 }

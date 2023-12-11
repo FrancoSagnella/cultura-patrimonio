@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Models\TipoAsignacion;
-
+use Exception;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use stdClass;
 
 class TipoAsignacionController extends Controller
 {
@@ -36,7 +39,24 @@ class TipoAsignacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //creo response
+        $response = new stdClass();
+        $response->message = "ok";
+
+        //se validan inputs
+        $validator = Validator::make($request->all(), [
+            'descr' => 'required|max:128',
+            'text' => 'required'
+        ]);
+
+        if($validator->fails()) {
+            $response->message = "error";
+            $response->errors = $validator->messages()->get("*");
+            return response()->json($response);
+        }
+
+        TipoAsignacion::create($request->except('_token'));
+
     }
 
     /**
@@ -58,7 +78,8 @@ class TipoAsignacionController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tipoAsignacion = TipoAsignacion::where('id', $id)->first();
+        return view('tipo-asignacion.edicion')->with('asignacion', $tipoAsignacion);
     }
 
     /**
@@ -70,7 +91,31 @@ class TipoAsignacionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        //creo response
+        $response = new stdClass();
+        $response->message = "ok";
+
+        //se validan inputs
+        $validator = Validator::make($request->all(), [
+            'descr' => 'required|max:128',
+            'text' => 'required'
+        ]);
+
+        //en caso de error en validacion, seteo errors en el response y devuelvo
+        if($validator->fails()) {
+            $response->message = "error";
+            $response->errors = $validator->messages()->get("*");
+
+            return response()->json($response);
+        }
+
+        //Si la validacion se pasa, hago el alta
+        $tipoAsignacion = TipoAsignacion::where('id', $id)->first();
+        $tipoAsignacion->descr = $request->get('descr');
+        $tipoAsignacion->text = $request->get('text');
+        $tipoAsignacion->save();
+
+        return response()->json($response);
     }
 
     /**
@@ -81,6 +126,44 @@ class TipoAsignacionController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+    }
+
+    /**
+     * Disable the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function disable($id)
+    {
+        //creo response
+        $response = new stdClass();
+        $response->message = "ok";
+
+        $tipoAsignacion = TipoAsignacion::where('id', $id)->first();
+        $tipoAsignacion->habilitado = 0;
+        $tipoAsignacion->save();
+
+        return response()->json($response);
+    }
+
+    /**
+     * Enable the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function enable($id)
+    {
+        //creo response
+        $response = new stdClass();
+        $response->message = "ok";
+
+        $tipoAsignacion = TipoAsignacion::where('id', $id)->first();
+        $tipoAsignacion->habilitado = 1;
+        $tipoAsignacion->save();
+
+        return response()->json($response);
     }
 }

@@ -19,9 +19,10 @@ class DireccionesController extends Controller
      */
     public function index()
     {
-        $direcciones = DB::table('dir')
-                            ->join('provincia', 'provincia.id', '=', 'dir.prov_id')
-                            ->select('dir.*', 'provincia.nombre_provincia')
+        $direcciones = DB::table('direccion')
+                            ->join('provincia', 'provincia.id', '=', 'direccion.provincia_id')
+                            ->join('localidad', 'localidad.localidad', '=', 'direccion.localidad')
+                            ->select('direccion.*', 'provincia.descr as descr_prov', 'localidad.descr as descr_loc')
                             ->get();
         return view('direcciones.index')->with('direcciones', $direcciones);
     }
@@ -34,7 +35,18 @@ class DireccionesController extends Controller
     public function create()
     {
         $provincias = Provincia::all();
-        return view('direcciones.alta')->with('provincias', $provincias);
+        return view('direcciones.alta')->with('provincias', $provincias)->with('fromAltaDirecciones', true);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function createGeneric()
+    {
+        $provincias = Provincia::all();
+        return view('direcciones.alta')->with('provincias', $provincias)->with('fromAltaDirecciones', false);
     }
 
     /**
@@ -51,8 +63,8 @@ class DireccionesController extends Controller
 
         //se validan inputs
         $validator = Validator::make($request->all(), [
-            'prov_id' => 'required',
-            'loc' => 'required|max:255',
+            'provincia_id' => 'required',
+            'localidad' => 'required',
             'cp' => 'required|max:255',
             'calle' => 'required|max:255',
             'nro' => 'required|max:255',
@@ -67,14 +79,8 @@ class DireccionesController extends Controller
             return response()->json($response);
         }
 
-        try{
-
-            //Si la validacion se pasa, hago el alta
-            Direccion::create($request->except('_token'));
-        }
-        catch(Exception $e){
-            return response()->json($e->getMessage());
-        }
+        //Si la validacion se pasa, hago el alta
+        Direccion::create($request->except('_token'));
 
         return response()->json($response);
     }
@@ -119,8 +125,8 @@ class DireccionesController extends Controller
 
         //se validan inputs
         $validator = Validator::make($request->all(), [
-            'prov_id' => 'required',
-            'loc' => 'required|max:255',
+            'provincia_id' => 'required',
+            'localidad' => 'required',
             'cp' => 'required|max:255',
             'calle' => 'required|max:255',
             'nro' => 'required|max:255',
@@ -137,8 +143,8 @@ class DireccionesController extends Controller
 
         //Si la validacion se pasa, hago el alta
         $direccion = Direccion::where('id', $id)->first();
-        $direccion->prov_id = $request->get('prov_id');
-        $direccion->loc = $request->get('loc');
+        $direccion->provincia_id = $request->get('provincia_id');
+        $direccion->localidad = $request->get('localidad');
         $direccion->cp = $request->get('cp');
         $direccion->calle = $request->get('calle');
         $direccion->nro = $request->get('nro');
