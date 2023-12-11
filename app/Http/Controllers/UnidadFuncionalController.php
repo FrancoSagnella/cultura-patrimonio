@@ -28,9 +28,14 @@ class UnidadFuncionalController extends Controller
     public function create()
     {
         $direcciones = DB::table('direccion')
-                ->join('provincia', 'provincia.id', '=', 'direccion.provincia_id')
-                ->select('direccion.*', 'provincia.descr')
-                ->get();
+            ->join('provincia', 'provincia.id', '=', 'direccion.provincia_id')
+            ->join('localidad', function ($join) {
+                $join->on('localidad.localidad', '=', 'direccion.localidad')
+                    ->on('localidad.provincia_id', '=', 'direccion.provincia_id');
+            })
+            ->select('direccion.*', 'provincia.descr as provincia_nombre', 'localidad.descr as localidad_nombre')
+            ->get();
+
         $provincias = Provincia::all();
         $complejos = Complejo::where('chk_uf', '=', 1)->get();
         //Tambien se tendrian que agarrar las dependencias de X jerarquia

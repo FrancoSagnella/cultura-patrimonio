@@ -13,10 +13,9 @@ class UnidadFuncional extends Model
     public $timestamps=false;
     protected $fillable = [
         	"com_id",
-            "uf",
             "descr",
             "dep_id",
             "dir_id",
-            "del",
+            "del"
     ];
 }

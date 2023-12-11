@@ -35,7 +35,7 @@
             <select class="form-control" name="direccion" id="direccion">
                 <option value="" selected>Seleccione</option>
                 @foreach ($direcciones as $direccion)
-                    <option value="{{$direccion->id}}">{{$direccion->nombre_provincia}}, {{$direccion->loc}} {{$direccion->cp}} {{$direccion->calle}} {{$direccion->nro}}, {{$direccion->tel}}</option>
+                <option value="{{$direccion->id}}"> {{$direccion->provincia_nombre}}, {{$direccion->localidad_nombre}} {{$direccion->cp}} {{$direccion->calle}} {{$direccion->nro}}, {{$direccion->tel}}</option>
                 @endforeach
             </select>
         </div>

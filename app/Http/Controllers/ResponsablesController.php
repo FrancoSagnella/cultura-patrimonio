@@ -79,10 +79,10 @@ class ResponsablesController extends Controller
 
             return response()->json($response);
         }
-    
+
             //Si la validacion se pasa, hago el alta
             Responsable::create($request->all());
-    
+
             return response()->json($response);
     }
 
@@ -94,7 +94,24 @@ class ResponsablesController extends Controller
      */
     public function show($id)
     {
-        //
+        //creo response
+        $response = new stdClass();
+        $response->message = "ok";
+
+        $responsable = Responsable::where('responsable.id', $id)
+                                    ->join('tipo_asignacion', 'responsable.tipo_asi_id', '=', 'tipo_asignacion.id')
+                                    ->join('tipo_responsable', 'responsable.tipo_res_id', '=', 'tipo_responsable.id')
+                                    ->select(
+                                        'responsable.*',
+                                        'tipo_asignacion.descr as tipo_asignacion',
+                                        'tipo_responsable.descr as tipo_responsable'
+                                    )
+                                    ->first();
+
+        $response->message = $responsable;
+
+        return response()->json($response);
+
     }
 
     /**
@@ -130,7 +147,7 @@ class ResponsablesController extends Controller
                 //creo response
                 $response = new stdClass();
                 $response->message = "ok";
-        
+
                 //se validan inputs
                 $validator = Validator::make($request->all(), [
                     'nom' => 'required|max:128',
@@ -145,12 +162,12 @@ class ResponsablesController extends Controller
                     'text' => 'required',
                     'del' => 'required|max:1'
                 ]);
-        
+
                 //en caso de error en validacion, seteo errors en el response y devuelvo
                 if($validator->fails()) {
                     $response->message = "error ". $request->get('id');
                     $response->errors = $validator->messages()->get("*");
-        
+
                     return response()->json($response);
                 }
                 $responsable = Responsable::where('id', $id)->first();
@@ -166,7 +183,7 @@ class ResponsablesController extends Controller
                 $responsable->text = $request->get('text');
                 $responsable->del = $request->get('del');
                 $responsable->save();
-        
+
                 return response()->json($response);
     }
 
