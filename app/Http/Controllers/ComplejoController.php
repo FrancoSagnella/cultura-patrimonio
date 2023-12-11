@@ -122,20 +122,26 @@ class ComplejoController extends Controller
 
         //Creo el complejo/edificio
         $createdCom = Complejo::create([
-            'nom' => $request->get('nombre'),
+            'descr' => $request->get('nombre'),
             'dir_id' => $direccion,
             'dep_id' => $request->get('dependencia'),
-            'chk_uf' => $chk_uf
+            'chk_uf' => $chk_uf,
+            'del' => 0
         ]);
 
         //Valido si el tipoUbicacion era edificio, le tengo que crear una unidad funcional con los mismos datos
-        if($chk_uf === 0){
-            $createdUf = UnidadFuncional::create([
-                'com_id' => $createdCom->id,
-                'nom' => $request->get('nombre'),
-                'dep_id' => $request->get('dependencia'),
-                'dir_id' => $direccion
-            ]);
+        try {
+            if($chk_uf === 0){
+                $createdUf = UnidadFuncional::create([
+                    'com_id' => $createdCom->id,
+                    'descr' => $request->get('nombre'),
+                    'dep_id' => $request->get('dependencia'),
+                    'dir_id' => $direccion,
+                    'del' => 0
+                ]);
+            }
+        } catch (Exception $e) {
+            return response()->json($e->getMessage());
         }
 
         return response()->json($response);
