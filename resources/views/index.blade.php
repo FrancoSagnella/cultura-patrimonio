@@ -66,7 +66,17 @@
                                     </div>
                             </div>
 
-                            
+                            <div class="col">
+    <div class="input-group">
+        <div class="input-group-prepend">
+            <span class="input-group-text" style="margin-right: -10px;"><i class="fas fa-search"></i></span>
+        </div>
+        <input id="buscar" type="text" class="form-control" placeholder="Buscar..." aria-label="Recipient's username" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">Button</button>
+        </div>
+    </div>
+</div>
                             <!-- <div class=" ">
                                 <div class=" ">
                                     <input id="AAAA" type="text" placeholder="AAAAA...">
